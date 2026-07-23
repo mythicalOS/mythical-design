@@ -4,3 +4,8 @@ node_modules/
 dist/
 .env
 .env.*
+
+# never publish internal planning / orchestration artifacts
+.superpowers/
+docs/superpowers/
+.claude/
