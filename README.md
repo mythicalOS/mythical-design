@@ -1,0 +1,56 @@
+# @mythicalos/tokens
+
+The **foundation layer** of the mythicalOS design system — canonical design
+tokens, self-hosted fonts, and brand assets. This package owns *look*, not
+behavior: no components, no framework code. It is consumed by every mythicalOS
+frontend and by the component library (`@mythicalos/ui-core` + its Preact/React
+bindings), which builds its components on top of these tokens.
+
+## Install
+
+```sh
+npm add @mythicalos/tokens
+```
+
+```js
+import "@mythicalos/tokens/styles";   // canonical tokens, both themes (light + heritage dark)
+```
+
+`assets/*` (logo SVGs/PNGs, woff2 fonts) are exported as package paths.
+
+## What it ships
+
+| Path | What it is |
+|------|-----------|
+| `tokens.css` | Canonical CSS custom properties — petrol accent, warm-paper light + heritage dark, Inter + JetBrains Mono, an 8-step type scale, radii, spacing, status colors, motion. Import from the package — never fork the values. |
+| `assets/fonts/` | Self-hosted Inter + JetBrains Mono (SIL OFL 1.1; license files included). |
+| `assets/logo-*.{svg,png}` | The mythical brand mark, light and dark. |
+| `design.md` | **The living brand + product design book** — direction, brand, tokens, type, shell/IA, component rules, and the decision log. The authoritative reference. |
+| `COMPONENTS.md` | The component registry — one row per component (ID · spec version · status). The dispatch index for the design system. |
+| `CHANGELOG.md` | Version history. The package minor tracks the book version (`0.5.x` ↔ book v0.5). |
+
+## Theming
+
+Light is the default; heritage dark activates under `[data-theme="dark"]` on
+the document root. The terminal palette (`--my-term-*`) is fixed in both themes.
+
+## Hard rules (enforced in review across the family)
+
+1. **Tokens only** — no hard-coded hex, px font-size, or radius downstream.
+2. **Shape encodes interactability** — squared radius = clickable; a pill is a
+   non-interactive tag only.
+3. **Status colors are status-only**, never decorative. Amber = warn only.
+4. **One focus ring** — 2px petrol, `outline-offset: 2px`, on every control, both themes.
+5. **No inline styles** (strict CSP). Dynamic visuals ride SVG presentation
+   attributes or classes — never `style=`.
+
+## Components & previews
+
+Components (the `<mythical-select>` web component, the Preact/React atoms, the
+family shell) and their live previews live in the component library repo, not
+here — this repo is deliberately stable and framework-free.
+
+## License
+
+Apache-2.0. Bundled fonts are licensed separately under the SIL Open Font
+License 1.1 (see `assets/fonts/LICENSE-*`).

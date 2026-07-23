@@ -1,0 +1,150 @@
+/* mythical / brokkr — design tokens v0.5 (canonical — docs/design/)
+   v0.4 (§M14 WS1, PETROL locked 2026-07-07) merged with the Claude Design
+   control-room export (2026-07-14): + --my-track, + --my-r-pill, + terminal
+   palette tokens, motion retuned to 120/200ms ease.
+   Light-first; dark = "heritage". Accent discipline: petrol is the single UI accent;
+   amber exists ONLY as warn; gold/ember retired from chrome. */
+
+/* Self-hosted fonts (CSP-strict image: no CDN ever). Files: assets/fonts/ (OFL licenses
+   alongside). Inter = variable (100–900, covers 400/500/650); JetBrains Mono = static
+   400/500/700 + italic (650 resolves up to 700 per CSS font-matching). */
+@font-face {
+  font-family: "Inter";
+  src: url("assets/fonts/InterVariable.woff2") format("woff2");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("assets/fonts/InterVariable-Italic.woff2") format("woff2");
+  font-weight: 100 900; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("assets/fonts/JetBrainsMono-Medium.woff2") format("woff2");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("assets/fonts/JetBrainsMono-Bold.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("assets/fonts/JetBrainsMono-Italic.woff2") format("woff2");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+
+:root {
+  /* surfaces */
+  --my-bg: #FAF9F6;            /* warm paper */
+  --my-surface: #FFFFFF;
+  --my-border: #E7E3DB;
+  --my-control-border: #878E9B; /* v0.5.4 — control boundaries — ≥3:1 non-text contrast
+     vs surface+bg (WCAG 1.4.11); --my-border stays for dividers/cards.
+     Measured: 3.3:1 vs surface / 3.1:1 vs bg */
+  --my-track: #EDEAE3;         /* v0.5 — gauge/meter rails, distribution bars */
+  --my-ink: #16181D;
+  --my-muted: #5A5F6A;
+
+  /* accent — petrol. User-tweakable from CURATED swatches only; when retinted,
+     derive soft/strong/hover via color-mix(in oklab, …) — never hand-pick. */
+  --my-accent: #0F6B66;        /* interactive accents, selection, focus */
+  --my-accent-strong: #0B5450; /* text-safe on light (AA) */
+  --my-accent-soft: #E0F0EE;   /* fills, hovers, chips */
+
+  /* status */
+  --my-ok: #1A7F4B;
+  --my-warn: #B45309;          /* amber lives HERE and only here */
+  --my-error: #B3261E;
+  --my-info: #2B5FAA;
+
+  /* terminal — fixed in BOTH themes; the terminal never goes light */
+  --my-term-bg: #0B0C0F;
+  --my-term-ink: #ECE7DE;
+  --my-term-assistant: #3FB8AE;
+  --my-term-user: #EFA443;
+  --my-term-dim: #9AA0AC;
+
+  /* type */
+  --my-font-ui: Inter, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --my-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --my-fs-caption: 12px; --my-fs-mono: 13px; --my-fs-body: 14px; --my-fs-body-lg: 16px;
+  --my-fs-h3: 20px; --my-fs-h2: 24px; --my-fs-h1: 32px; --my-fs-display: 44px;
+  --my-fw-regular: 400; --my-fw-medium: 500; --my-fw-bold: 650;
+
+  /* shape & space (cards default 10; nested rows may step 7–9;
+     r-pill = NON-interactive tags/status only — see rule 10) */
+  --my-r-control: 6px; --my-r-card: 10px; --my-r-modal: 16px; --my-r-pill: 99px;
+  --my-sp-1: 4px; --my-sp-2: 8px; --my-sp-3: 12px; --my-sp-4: 16px;
+  --my-sp-5: 24px; --my-sp-6: 32px; --my-sp-7: 48px; --my-sp-8: 64px;
+
+  /* motion (v0.5 retune) */
+  --my-t-fast: 120ms ease; --my-t-base: 200ms ease;
+
+  /* state & feedback (derived from locked hues) */
+  --my-ink-hover: #2B2F37;        /* ink-fill controls on hover */
+  --my-accent-hover: #0C5A56;     /* petrol-fill controls on hover (accent→strong midpoint) */
+  --my-surface-hover: #F6F4EF;    /* bordered/ghost controls, rows, nav items on hover */
+  --my-disabled-bg: #F1EFE9;
+  --my-disabled-ink: #9AA0AC;
+  --my-ok-soft: #E4F2EA; --my-warn-soft: #FAEEDD;
+  --my-error-soft: #FAE9E8; --my-info-soft: #E8EEF8;   /* toast/banner fills — always with icon+label */
+  --my-scrim: rgba(11, 12, 15, .45);
+  --my-shadow-modal: 0 16px 48px rgba(22, 24, 29, .16);
+}
+
+/* dark = "heritage" (terminal-native). Applied via [data-theme="dark"]. */
+[data-theme="dark"], .my-dark {
+  --my-bg: #0B0C0F;
+  --my-surface: #14161C;
+  --my-border: #262B36;
+  --my-control-border: #5F6673; /* v0.5.4 — control boundaries — ≥3:1 non-text contrast
+     vs surface+bg (WCAG 1.4.11). Measured: 3.1:1 vs surface / 3.4:1 vs bg */
+  --my-track: #20242D;
+  --my-ink: #ECE7DE;           /* heritage cream */
+  --my-muted: #9AA0AC;
+  --my-accent: #3FB8AE;
+  --my-accent-strong: #7FD1C9;
+  --my-accent-soft: #10302E;
+  --my-ok: #4CC38A;
+  --my-warn: #EFA443;          /* heritage amber, demoted to warn */
+  --my-error: #E5484D;
+  --my-info: #7AA7E8;
+
+  /* state & feedback */
+  --my-ink-hover: #F5F1E9;        /* cream-fill controls brighten on hover */
+  --my-accent-hover: #55C4BA;
+  --my-surface-hover: #1A1D24;
+  --my-disabled-bg: #1A1C22;
+  --my-disabled-ink: #5C616C;
+  --my-ok-soft: #11301F; --my-warn-soft: #33250E;
+  --my-error-soft: #341316; --my-info-soft: #15233A;
+  --my-scrim: rgba(0, 0, 0, .55);
+  --my-shadow-modal: 0 16px 48px rgba(0, 0, 0, .5);
+}
+
+/* Rules of use (enforced in review, not just documented):
+   1. --my-accent never carries body text on light; use --my-accent-strong.
+   2. warn/ok/error/info are STATUS ONLY — never decoration.
+   3. Terminal surfaces always use the --my-term-* set, regardless of app theme.
+   4. Gauges: fill = accent → warn ≥75% → error ≥90% (whole-fill hue flip, never
+      gradient); rail = --my-track; thresholds from contextmonitor (tweakable).
+   5. tabular-nums on all counters/gauges.
+   6. Focus is ALWAYS `outline: 2px solid var(--my-accent); outline-offset: 2px` —
+      every interactive control, both themes; never outline:none without replacement.
+   7. Status softs (--my-*-soft feedback fills) carry an icon + label, never color alone.
+   8. Disabled = --my-disabled-bg/-ink + cursor:not-allowed; never opacity on text.
+   9. Danger FILLS exist only in the lifecycle confirm dialogs; danger is outline
+      everywhere else. Destructive confirms require a typed name match.
+  10. Shape encodes interactability (v0.5.1): --my-r-pill is for NON-interactive
+      status tags/labels only. Everything clickable — buttons, inputs, selects,
+      editable chips, toggles — is squared --my-r-control; a pill never invites
+      a click, so an interactive control must never look like one.
+  11. Control boundaries use --my-control-border (≥3:1, WCAG 1.4.11 non-text
+      contrast); --my-border is for dividers, cards and non-interactive outlines
+      only; hover/focus/error states unchanged. */
