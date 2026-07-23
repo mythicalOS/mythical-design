@@ -73,6 +73,9 @@
   /* type */
   --my-font-ui: Inter, -apple-system, "Segoe UI", Roboto, sans-serif;
   --my-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --my-fs-micro: 11px;         /* v0.5.11 — micro-labels (section rulers, chips, badges):
+     the book's 9.5–11px band (design.md §4) as a scale point; pair with 650 weight,
+     uppercase, +0.4px letter-spacing. Below caption by design — never body text. */
   --my-fs-caption: 12px; --my-fs-mono: 13px; --my-fs-body: 14px; --my-fs-body-lg: 16px;
   --my-fs-h3: 20px; --my-fs-h2: 24px; --my-fs-h1: 32px; --my-fs-display: 44px;
   --my-fw-regular: 400; --my-fw-medium: 500; --my-fw-bold: 650;

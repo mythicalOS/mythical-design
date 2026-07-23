@@ -6,6 +6,17 @@ maintainer-authored amendments recorded as numbered rows in the `design.md` §8 
 (the log, not the version number, is the lock ledger). Component spec versions live
 per-row in `COMPONENTS.md` and are independent of the package version.
 
+## 0.5.11 — 2026-07-23
+
+New token: `--my-fs-micro: 11px`.
+
+- The book (§4) has always spec'd micro-labels (section rulers, chips, badges)
+  at 9.5–11px / 650 / uppercase / +0.4px letter-spacing, but the scale had no
+  token for it — so tokens-only consumers were forced to snap micro-labels up
+  to `--my-fs-caption` (12px), off the band's own ceiling (surfaced building
+  `@mythicalos/ui-core` styles: `.my-chip` 10→12px, `.my-card__title` 11→12px).
+  One scale point at the band ceiling closes the gap; no locked decision changes.
+
 ## 0.5.10 — 2026-07-22
 
 Component sources move to `components/`.
