@@ -10,7 +10,7 @@ is **current** when its "implements" column matches the spec version.
 
 ## Components
 
-| ID | Spec | Status | Spec anchor (`preview.html`) | mythical-ui (:7480, Preact — in the umbrella repo) | implements |
+| ID | Spec | Status | Spec anchor (`preview.html`) | brokkr web UI (:7480, Preact) | implements |
 |----|------|--------|------------------------------|------------------------------|------------|
 | `app-shell` | v1 | shipped | `#c-app-shell` | `src/app.tsx` (top bar; 2-page shell predates the 5-page IA) | v0.4 — **5-page IA + BROKKR brand block pending** |
 | `button` | v2 | shipped | `#c-button` | `src/components/Button.tsx` | v0.4 — re-verify against v0.5; v2 = secondary resting boundary → `--my-control-border` (decision #21) |
@@ -22,7 +22,7 @@ is **current** when its "implements" column matches the spec version.
 | `confirm-dialog` | v1 | shipped | `#c-confirm-dialog` | `src/components/ConfirmDialog.tsx` | v0.4 |
 | `toast` | v1 | shipped | `#c-toast` | `src/components/Toast.tsx` | v0.4 |
 | `empty-state` | v1 | shipped | `#c-empty-state` | `src/components/EmptyState.tsx` | v0.4 |
-| `save-bar` | v1 | shipped | *(settings layout, `design.md` §8 in `m14/`)* | `src/components/SaveBar.tsx` | v0.4 |
+| `save-bar` | v1 | shipped | *(settings layout — internal design archive)* | `src/components/SaveBar.tsx` | v0.4 |
 | `family-tile` | v1 | shipped | `#c-org-family` | `src/components/FamilyPanels.tsx` | v0.4 — re-verify friendly-absent tone |
 | `stat-tiles` | v1 | **NEW — unimplemented** | `#c-stat-tiles` | suggest `src/components/StatTiles.tsx` (sessions detail header) | — |
 | `git-chip` | v1 | **NEW — unimplemented** | `#c-git-chip` | suggest `src/components/GitChip.tsx` (sessions detail header) | — |
@@ -33,7 +33,7 @@ is **current** when its "implements" column matches the spec version.
 | `org-card` | v1 | **NEW — unimplemented** | `#c-org-family` | settings rail footer (`src/pages/settings.tsx`) | — |
 
 Other consumers: **the Command Center** is legacy — it adopts this system wholesale
-in the §M12 React rebuild, not component-by-component; don't retrofit it. The **setup
+in the React rebuild, not component-by-component; don't retrofit it. The **setup
 wizard** and any future family-product UI (skuld/saga/edda) implement from the same rows.
 
 ## Dispatching a coding agent
@@ -41,7 +41,7 @@ wizard** and any future family-product UI (skuld/saga/edda) implement from the s
 Prompt skeleton for "replace/implement component X in product Y":
 
 > Implement/replace component **`<id>` v`<n>`** in `<product>` per the mythical design
-> system (repo `mythical-design`; submodule `mythical-design/` in the umbrella repo —
+> system (repo `mythical-design` —
 > prefer consuming the package over copying). Read, in order: `design.md` (rules),
 > `tokens.css` (canonical tokens — import the package's `tokens.css`, never fork values),
 > and the component's reference markup in `preview.src.html` at anchor `#c-<id>` (open `preview.html` in a
@@ -53,6 +53,6 @@ Prompt skeleton for "replace/implement component X in product Y":
 > typecheck + tests. Then update the component's row in `COMPONENTS.md`
 > ("implements" column) — and nothing else in this repo.
 
-Screen-level context (how components compose on a page): umbrella
-`docs/design/control-room/handoff/Control Room.dc.html`. When a dispatch reveals a spec gap, fix the spec first (template + regenerate),
+Screen-level context (how components compose on a page): the handoff prototype in the
+maintainers' internal design archive. When a dispatch reveals a spec gap, fix the spec first (template + regenerate),
 then implement — never let a product fork the design.

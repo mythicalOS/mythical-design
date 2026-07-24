@@ -6,6 +6,24 @@ maintainer-authored amendments recorded as numbered rows in the `design.md` §8 
 (the log, not the version number, is the lock ledger). Component spec versions live
 per-row in `COMPONENTS.md` and are independent of the package version.
 
+## 0.5.13 — 2026-07-24
+
+Preview cards live in-repo again; book wording made release-neutral.
+
+- `ds/` restored: the full 24-card preview set (brand, foundations, components,
+  layouts — select v3), including the new `ds/product-glyphs.html`: the five
+  product glyphs (brokkr/skuld/saga/edda/asgard) in light, heritage-dark and
+  22px-tile tunings, with the construction rules in-card.
+- asgard glyph recentered — geometry shifted up 21 units so the arch sits on the
+  optical center like the other four glyphs (all shipping surfaces updated).
+- `design.md`, `COMPONENTS.md`, changelog and the `tokens.css` header now describe
+  history and provenance neutrally (internal design archive); no token values,
+  component specs or locked decisions changed.
+
+## 0.5.12 — 2026-07-24
+
+Provenance release workflow (npm Trusted Publishing / OIDC); no design changes.
+
 ## 0.5.11 — 2026-07-23
 
 New token: `--my-fs-micro: 11px`.
@@ -267,7 +285,7 @@ with zero innerHTML sinks).
   an option removed while another is disabled in one task at `selectedIndex -1`;
   and multi-move (or insert+remove) batches. Each needs mutually-cancelling edits
   within one task. The ordinary reactive-framework shape — moving `[selected]`
-  from one option to another on re-render, which is how mythical-ui authors it —
+  from one option to another on re-render, which is how the first consumer authors it —
   matches native on chromium, firefox and webkit (probed).
 
 ## 0.5.3 — 2026-07-15
@@ -276,7 +294,7 @@ with zero innerHTML sinks).
 
 - One self-contained HTML card per component/foundation/layout (first-line
   `<!-- @dsCard group="…" -->` marker), mirroring the `preview.src.html` sections.
-  Seeded from the m14 WS1 card set (umbrella `docs/design/m14/ds/`, now history),
+  Seeded from the original card set (internal design archive, now history),
   brought to v0.5: inputs card → spec v2 (chip-dropdown + shape rule #20), gauge
   rail → `--my-track`, colors card gains track + terminal palette; NEW cards for
   select v2 (component JS inlined, progressive-mode-first so sandboxed panes
@@ -287,11 +305,11 @@ with zero innerHTML sinks).
 
 ## 0.5.2 — 2026-07-15
 
-`mythical-select` CSS delivery is CSP-safe (first-consumer dispatch finding, mythical-ui).
+`mythical-select` CSS delivery is CSP-safe (first-consumer dispatch finding).
 
 - Shadow styles now ship via a shared constructable stylesheet (`adoptedStyleSheets`)
-  instead of an injected `<style>` tag: a consumer CSP of `style-src 'self'` (mythical-ui
-  serves exactly that) blocks inline style elements even inside shadow roots, while
+  instead of an injected `<style>` tag: a consumer CSP of `style-src 'self'` (which the
+  first consumer serves exactly) blocks inline style elements even inside shadow roots, while
   constructed sheets are exempt by spec. The `<style>`-tag path survives only as the
   fallback for engines without constructable sheets. No visual or API change; spec stays v2.
 
@@ -325,9 +343,9 @@ Decision #20 (maintainer — amends the pill-chip look in #19) + `mythical-selec
 
 ## 0.5.0 — 2026-07-15
 
-Initial extraction from the umbrella repo `docs/design/` into its own repo.
+Initial extraction from the maintainers' internal design archive into its own repo.
 
-- Design book v0.5 (`design.md`) — m14 WS1 v0.4 merged with the Claude Design
+- Design book v0.5 (`design.md`) — v0.4 merged with the
   control-room iteration; decisions #1–#19.
 - Canonical tokens v0.5 (`tokens.css`), brand assets (M8 logo SVGs + `.graffle`
   sources, self-hosted Inter/JetBrains Mono, OFL licenses).

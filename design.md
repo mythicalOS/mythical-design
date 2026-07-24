@@ -1,31 +1,18 @@
 # mythical / brokkr — design book — v0.5 (canonical)
 
 > **This is the living, canonical design reference for all mythical-family UI work.**
-> It lives in its own repo — **`mythical-design`** (submodule `mythical-design/` in
-> the umbrella repo), versioned and consumable as a package; this file + `tokens.css` +
-> `assets/` are what you implement against. The records that fed it stay in the umbrella
-> repo under `docs/design/` (`m14/`, `control-room/`).
+> It lives in its own repo — **`mythical-design`** — versioned and consumable as a package; this file + `tokens.css` +
+> `assets/` are what you implement against. The records that fed it stay in the
+> maintainers' internal design archive.
 >
-> Status: **v0.5 — m14 WS1 book (v0.4) merged with the Claude Design control-room
-> iteration (exported 2026-07-14, preserved verbatim in `control-room/handoff/`)**.
-> PETROL + M8 logo remain locked (maintainer 2026-07-07/08). The v0.5 deltas (app IA,
-> track/pill/terminal tokens, motion retune, brand block with BROKKR label, product
-> voice) come from the maintainer-authored Claude Design pass — adopted as the newest locks.
->
-> Consumers: `mythical-ui` (:7480 local UI), the setup wizard, the Command Center
-> (React — visual language only, §M12), and any future family-product UI (skuld, saga,
+> Consumers: the brokkr local web UI (:7480), the setup wizard, the Command Center
+> (React — visual language only), and any future family-product UI (skuld, saga,
 > edda). Implement THIS book, not vibes.
 >
 > Component preview: **`preview.html`** — every component below on one page,
 > self-contained (viewable anywhere; theme toggle + accent retint in a real
 > browser). Generated from `preview.src.html` by `scripts/generate-preview.sh` — the
 > git-hash stamp at its top says which token state it was built from.
->
-> History (kept in the **umbrella repo** under `docs/design/`, do not sweep):
-> `m14/design.md` v0.4 = the closed §M14 WS1 record with the full taste-gate log and
-> exploration previews. `control-room/handoff/` = the high-fidelity interactive prototype
-> (open `Control Room.dc.html` in a browser) — the canonical screen-level reference.
-> `control-room/daemon-api-inventory.md` = the backend contract it was designed against.
 
 ## 1. Direction
 
@@ -66,8 +53,8 @@ over large ring) — the whole 8 reads as the live lineage tip. Monogram codenam
   small all-caps **BROKKR** product label under it, right-aligned to the wordmark text.
   `mythical` is the family/OS mark; `brokkr` is this product (the developer container).
   Family products (skuld, saga, edda) follow the same pattern: shared mark, own label.
-- Exploration record (umbrella `docs/design/`): `m14/preview*.html`, `m14/exploration/`,
-  superseded `m14/assets/logo-{a,b,c}-*.svg` — kept deliberately, historical only.
+- Exploration record: earlier previews and superseded logo variants are kept in the
+  internal design archive — deliberately, historical only.
 
 ## 3. Color tokens (canonical source: `tokens.css` v0.5)
 
@@ -136,7 +123,7 @@ color-alone.
   Spine/lineage views may animate node pulses (≤1/s); `prefers-reduced-motion`
   respected.
 
-## 6. App shell & information architecture *(v0.5 — supersedes the 2-page shell of m14 §7.9)*
+## 6. App shell & information architecture *(v0.5 — supersedes the earlier 2-page shell)*
 
 - **Top bar 56px**: brand block (§2) + page nav **Sessions · Projects · Memory ·
   Files · Settings**; right side: container status chip, theme toggle (light /
@@ -147,8 +134,8 @@ color-alone.
   Projects/Memory alike) of compact cards; detail pane flexes (content max-widths
   ~1100–1160px where prose/heroes apply). Pin paired header heights (e.g. 76px/81px)
   so rail and detail borders align.
-- Pages (screen-level truth = the handoff prototype; behavioral spec = umbrella
-  `docs/design/control-room/handoff/README.md`):
+- Pages (screen-level truth = the handoff prototype, kept with its behavioral
+  spec in the internal design archive):
   1. **Sessions** — the control room: session cards (avatar, status dot, context gauge
      bar), detail with arc gauge + stat tiles, git status, always-dark terminal with
      merged stop-turn control, per-agent delivery queue (ASAP/ON-DONE), send bar.
@@ -170,7 +157,7 @@ color-alone.
 ## 7. Components & interaction rules
 
 Canonical visuals: `preview.html` (every component, both themes, anchored per component)
-plus the `m14/ds/` cards and the handoff prototype (both in umbrella `docs/design/`) for
+plus the `ds/` cards (in this repo) and the handoff prototype (internal design archive) for
 in-context behavior. **Each
 component carries an ID + spec version in `COMPONENTS.md`** — the registry that maps
 spec → implementation per product and defines how to dispatch an agent to update one.
@@ -211,9 +198,9 @@ v0.5 additions from the control-room design: `stat-tiles`, `git-chip`, `tier-bar
 
 ## 8. Decision log
 
-The full m14 taste-gate log (gates 1–11, all resolved) lives in `m14/design.md` §7 —
+The full taste-gate log (gates 1–11, all resolved) lives in the internal design archive —
 the locked outcomes are folded into the sections above. v0.5 additions (#12–#19) were
-maintainer-authored in Claude Design (2026-07-14 export) and carry no open gates; #20–#21
+maintainer-authored (2026-07-14 export) and carry no open gates; #20–#21
 are maintainer-authored in-repo amendments (v0.5.1/v0.5.4, 2026-07-15):
 
 | # | v0.5 decision | Section |

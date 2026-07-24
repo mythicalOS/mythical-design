@@ -1,5 +1,5 @@
-/* mythical / brokkr — design tokens v0.5 (canonical — docs/design/)
-   v0.4 (§M14 WS1, PETROL locked 2026-07-07) merged with the Claude Design
+/* mythical / brokkr — design tokens v0.5 (canonical)
+   v0.4 (petrol locked 2026-07-07) merged with the
    control-room export (2026-07-14): + --my-track, + --my-r-pill, + terminal
    palette tokens, motion retuned to 120/200ms ease.
    Light-first; dark = "heritage". Accent discipline: petrol is the single UI accent;
@@ -136,7 +136,7 @@
    2. warn/ok/error/info are STATUS ONLY — never decoration.
    3. Terminal surfaces always use the --my-term-* set, regardless of app theme.
    4. Gauges: fill = accent → warn ≥75% → error ≥90% (whole-fill hue flip, never
-      gradient); rail = --my-track; thresholds from contextmonitor (tweakable).
+      gradient); rail = --my-track; thresholds are product-defined (tweakable).
    5. tabular-nums on all counters/gauges.
    6. Focus is ALWAYS `outline: 2px solid var(--my-accent); outline-offset: 2px` —
       every interactive control, both themes; never outline:none without replacement.
