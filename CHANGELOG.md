@@ -6,6 +6,30 @@ maintainer-authored amendments recorded as numbered rows in the `design.md` §8 
 (the log, not the version number, is the lock ledger). Component spec versions live
 per-row in `COMPONENTS.md` and are independent of the package version.
 
+## Unreleased
+
+Two new preview cards, synced down from the design pane. No token or package
+change — `ds/` is outside the npm `files` whitelist, so nothing here ships to
+consumers and no version is claimed.
+
+- `ds/components-timeline.html` (Components) — one component for anything on a
+  clock: a forward schedule and a backward trace, hollow dot = not yet, filled =
+  happened. The dot derives from the same two custom properties as the rail
+  (`--tl-gutter`, `--tl-rail`), so it cannot drift off the line.
+- `ds/components-file-explorer.html` (Components) — the file-tree rail and
+  markdown preview, specifying two distinct tree modes (all-mounts, where the
+  roots are the container's bind mounts; project mode, where the selected
+  project's repos are the roots). Previously only in the product design project
+  and never in this repo, though an earlier copy of it was implemented natively
+  in brokkr's Files page.
+- Both registered in `COMPONENTS.md` as unimplemented, anchored to the card path
+  rather than `preview.html` — that file no longer exists in this repo, so every
+  older `#c-*` anchor in the registry is a dangling reference awaiting a sweep.
+- `tokens.css` deliberately NOT synced: the pane's copy differs only by
+  `/* @kind … */` annotations its token classifier injects on the five
+  font-weight/motion tokens. Every value is identical, so the repo's copy stays
+  the source of record rather than importing editor metadata.
+
 ## 0.5.13 — 2026-07-24
 
 Preview cards live in-repo again; book wording made release-neutral.
