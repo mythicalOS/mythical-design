@@ -8,9 +8,16 @@ per-row in `COMPONENTS.md` and are independent of the package version.
 
 ## Unreleased
 
-Two new preview cards, synced down from the design pane. No token or package
-change — `ds/` is outside the npm `files` whitelist, so nothing here ships to
-consumers and no version is claimed.
+Two new preview cards plus a select popup fix, synced down from the design pane.
+No token or package change — `ds/` is outside the npm `files` whitelist, so
+nothing here ships to consumers and no version is claimed.
+
+- `ds/components-select.html` — the popup is pinned to both edges and sized
+  `border-box`. It was `min-width:100%` under content-box, so the popup's own
+  6px padding and 1px border were added outside that 100% and it rendered 14px
+  wider than the control it belongs to. The implementation carries the same fix
+  (`@mythicalos/ui-core` 0.2.2) — spec row `select` stays v3, since the geometry
+  is a defect fix and not a spec change.
 
 - `ds/components-timeline.html` (Components) — one component for anything on a
   clock: a forward schedule and a backward trace, hollow dot = not yet, filled =
