@@ -54,7 +54,8 @@ here — this repo is deliberately stable and framework-free.
 
 **Apache-2.0** — see [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE). Bundled fonts
 are licensed separately under the SIL Open Font License 1.1 (see
-`assets/fonts/LICENSE-*`).
+`assets/fonts/LICENSE-*`). The licence covers the code, not the names and
+branding — see [`TRADEMARK.md`](TRADEMARK.md).
 
 Everything this package ships is open and stays open. It is not a reduced build
 of a paid one, and no token, asset, or rule is held back for a commercial tier.

@@ -47,7 +47,7 @@ jobs:
         run: |
           set -euo pipefail
           missing=0
-          for f in LICENSE NOTICE SECURITY.md CONTRIBUTING.md CODE_OF_CONDUCT.md SUPPORT.md \
+          for f in LICENSE NOTICE TRADEMARK.md SECURITY.md CONTRIBUTING.md CODE_OF_CONDUCT.md SUPPORT.md \
                    .github/PULL_REQUEST_TEMPLATE.md .github/ISSUE_TEMPLATE/config.yml; do
             if [ -f "$f" ]; then echo "  ok   $f"; else echo "  MISS $f"; missing=1; fi
           done
