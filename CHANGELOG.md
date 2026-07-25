@@ -8,6 +8,24 @@ per-row in `COMPONENTS.md` and are independent of the package version.
 
 ## Unreleased
 
+The registry now says which components are PACKAGED and which live in exactly one
+product — it had drifted in both directions, which made it undispatchable.
+
+- Seven components graduated into `@mythicalos/*` and their rows now name the
+  package instead of a path inside one product: `popover` (specified here but
+  never built anywhere), `save-bar`, `stat-tiles`, `git-chip`, `session-card`,
+  the `terminal`/`queue-row`/`send-bar` set, and `file-explorer`. Also repointed:
+  `app-shell`, `button`, `input`, `gauge`, `confirm-dialog`, `toast`,
+  `empty-state`, `select`.
+- Five rows had claimed **NEW — unimplemented** while the component was in fact
+  already built — one even said the Memory page "does not exist yet". Those now
+  read *built in-product, NOT packaged*, which is the honest state and marks them
+  as extraction candidates. `timeline` is the only row still genuinely
+  unimplemented anywhere.
+- Column 4 pointed at anchors in a `preview.html` this repo no longer ships, so
+  every `#c-*` link was dangling. Rows now cite their card under `ds/`, and the
+  dispatch prose follows.
+
 Two new preview cards, a select popup fix, and the family narrowing to four
 products. No token change. The card work is `ds/`-only (outside the npm `files`
 whitelist, so it does not reach consumers), but the family change also edits
