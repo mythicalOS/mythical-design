@@ -50,7 +50,22 @@ Components (the `<mythical-select>` web component, the Preact/React atoms, the
 family shell) and their live previews live in the component library repo, not
 here — this repo is deliberately stable and framework-free.
 
-## License
+## Licence and the paid tier
 
-Apache-2.0. Bundled fonts are licensed separately under the SIL Open Font
-License 1.1 (see `assets/fonts/LICENSE-*`).
+**Apache-2.0** — see [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE). Bundled fonts
+are licensed separately under the SIL Open Font License 1.1 (see
+`assets/fonts/LICENSE-*`).
+
+Everything this package ships is open and stays open. It is not a reduced build
+of a paid one, and no token, asset, or rule is held back for a commercial tier.
+mythicalOS does sell a hosted, multi-user tier — that is separate, private
+software, and it consumes these packages on exactly the terms you do.
+
+Apache-2.0 lets you use, modify, redistribute, and build commercial products on
+this package — including products that compete with ours — provided you keep the
+licence and attribution notices intact. Contributions are accepted under the same
+licence with a [DCO](https://developercertificate.org/) sign-off and **no CLA**
+(see [`CONTRIBUTING.md`](CONTRIBUTING.md)): we take no copyright assignment and
+no relicensing right, so this project cannot be moved off Apache-2.0 without
+every contributor's agreement, and anything already released under it stays
+available under it.

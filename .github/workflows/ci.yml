@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  hygiene:
+    name: hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      # This is a PUBLIC repo. Any hit here is a release blocker, not a style
+      # nit. Scan excludes .git, node_modules, and this workflow file itself.
+      # The exclusion is defense in depth, not the primary fix: every private
+      # repo name below is split by a single-character bracket class so this
+      # file never spells one out contiguously in plaintext — a public workflow
+      # listing private repo names verbatim would itself be the leak the gate
+      # exists to catch. Keep in sync with the sibling library repo's gate.
+      - name: Genericize grep gate (banned internal terms)
+        run: |
+          set -euo pipefail
+          pattern='mythical-proj[e]ct|agent-we[b]|mythical-serv[e]r|agent-daemo[n]|agent-local-mc[p]|mythical-sk[u]ld|mythical-sa[g]a|mythical-ed[d]a|mythical-brok[k]r|agent-playbook[s]|agent-skill[s]|agent-remote-mc[p]|/private/tmp|hamed[d]k|esmile[y]|/opt/mythical|127\.0\.0\.1:7[0-9]{3}'
+          if grep -rliIE "$pattern" . \
+              --exclude-dir=.git --exclude-dir=.github --exclude-dir=node_modules
+          then
+            echo "::error::banned internal term(s) found — see file(s) listed above"
+            exit 1
+          fi
+          echo "genericize gate: clean"
+
+      # The community-health files must be PHYSICAL files in this repo: org-level
+      # defaults do not ship in a clone, a tarball, or a package. Losing one is
+      # silent — GitHub's community profile counts the org default and shows
+      # green while a downstream consumer gets nothing.
+      - name: Repo-local health files present
+        run: |
+          set -euo pipefail
+          missing=0
+          for f in LICENSE NOTICE SECURITY.md CONTRIBUTING.md CODE_OF_CONDUCT.md SUPPORT.md \
+                   .github/PULL_REQUEST_TEMPLATE.md .github/ISSUE_TEMPLATE/config.yml; do
+            if [ -f "$f" ]; then echo "  ok   $f"; else echo "  MISS $f"; missing=1; fi
+          done
+          [ "$missing" -eq 0 ] || { echo "::error::repo-local health file(s) missing"; exit 1; }
+
+      # Reverting an action to a tag re-opens the supply chain the pins closed.
+      # The pattern is anchored to a real YAML key and splits the keyword with a
+      # bracket class, so this step cannot match the pattern string in its own
+      # source — an unanchored grep here fails the build on itself.
+      - name: Actions are SHA-pinned
+        run: |
+          set -euo pipefail
+          unpinned=$(grep -rhoE '^[[:space:]]*-?[[:space:]]*us[e]s:[[:space:]]*[^[:space:]]+' \
+                       .github/workflows/ | grep -vE '@[0-9a-f]{40}$' || true)
+          if [ -n "$unpinned" ]; then
+            echo "::error::action(s) not pinned to a full commit SHA:"; echo "$unpinned"; exit 1
+          fi
+          echo "action pinning: clean"
