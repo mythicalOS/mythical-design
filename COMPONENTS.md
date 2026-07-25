@@ -36,7 +36,7 @@ is **current** when its "implements" column matches the spec version.
 
 Other consumers: **the Command Center** is legacy — it adopts this system wholesale
 in the React rebuild, not component-by-component; don't retrofit it. The **setup
-wizard** and any future family-product UI (skuld/saga/edda) implement from the same rows.
+wizard** and the other family-product UIs (skuld/saga) implement from the same rows.
 
 ## Dispatching a coding agent
 

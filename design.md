@@ -6,8 +6,8 @@
 > maintainers' internal design archive.
 >
 > Consumers: the brokkr local web UI (:7480), the setup wizard, the Command Center
-> (React — visual language only), and any future family-product UI (skuld, saga,
-> edda). Implement THIS book, not vibes.
+> (React — visual language only), and the other family-product UIs (skuld,
+> saga). Implement THIS book, not vibes.
 >
 > Component preview: **`preview.html`** — every component below on one page,
 > self-contained (viewable anywhere; theme toggle + accent retint in a real
@@ -52,7 +52,7 @@ over large ring) — the whole 8 reads as the live lineage tip. Monogram codenam
 - **Product label** *(v0.5)*: the app brand block is logo + `mythical●` wordmark with a
   small all-caps **BROKKR** product label under it, right-aligned to the wordmark text.
   `mythical` is the family/OS mark; `brokkr` is this product (the developer container).
-  Family products (skuld, saga, edda) follow the same pattern: shared mark, own label.
+  Family products (skuld, saga, asgard) follow the same pattern: shared mark, own label.
 - Exploration record: earlier previews and superseded logo variants are kept in the
   internal design archive — deliberately, historical only.
 

@@ -8,9 +8,22 @@ per-row in `COMPONENTS.md` and are independent of the package version.
 
 ## Unreleased
 
-Two new preview cards plus a select popup fix, synced down from the design pane.
-No token or package change — `ds/` is outside the npm `files` whitelist, so
-nothing here ships to consumers and no version is claimed.
+Two new preview cards, a select popup fix, and the family narrowing to four
+products. No token change. The card work is `ds/`-only (outside the npm `files`
+whitelist, so it does not reach consumers), but the family change also edits
+`design.md` and `COMPONENTS.md`, **which do ship** — so the next release claims a
+patch version rather than the "no version" this section previously carried.
+
+- **The family is four products** — brokkr, skuld, saga, asgard. The fifth is
+  retired and is not to be reintroduced in this book, its cards, or any consumer.
+  - `ds/product-glyphs.html` — the retired product's row is dropped from all
+    three bands (light art, heritage dark, 22px optical) and from the
+    construction caption, which loses the concentric ring+dot exception with it.
+    Four glyphs per band; asgard remains the one deliberately ring-less mark.
+  - `design.md`, `COMPONENTS.md` — the consumer lists name the surviving
+    family UIs.
+  - `ds/foundations-shape.html` — the retired name was also a sample chip label
+    in the shape card; swapped for a live product.
 
 - `ds/components-select.html` — the popup is pinned to both edges and sized
   `border-box`. It was `min-width:100%` under content-box, so the popup's own
