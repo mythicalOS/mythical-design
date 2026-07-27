@@ -50,6 +50,20 @@ Components (the `<mythical-select>` web component, the Preact/React atoms, the
 family shell) and their live previews live in the component library repo, not
 here — this repo is deliberately stable and framework-free.
 
+**`ds/` is the exception, and it is load-bearing: it is the sync source for the
+claude.ai Design pane.** The 26 self-contained cards there are what the pane
+renders — do not delete them as stale duplicates of the component library's own
+preview cards. The component library keeps its own smaller card set for local
+preview and drift control against its component sources; the two sets overlap but
+are **not** interchangeable, because each card's `@dsInline` marker names a
+canonical path that only its own repo resolves. Content edits to a shared card
+must be applied in both places, by hand, in the same wording.
+
+Note the cards' `@dsInline`/`@dsFonts` markers reference `components/` and
+`scripts/check-ds.sh` — neither has ever existed in this repo. The cards are
+generated elsewhere and committed here; there is no in-repo tooling to
+regenerate or verify them, and CI does not check them.
+
 ## Licence and the paid tier
 
 **Apache-2.0** — see [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE). Bundled fonts
