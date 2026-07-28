@@ -12,7 +12,10 @@ per-row in `COMPONENTS.md` and are independent of the package version.
   knob), light + heritage values: a lift of value, never a glow.
 - **`ds/components-theme-toggle.html`** — new card (maintainer-authored in the Design pane):
   one component, three members — segmented (System first-class), icon (sun↔moon cross-fade,
-  skips System), switch (settings rows only). 28 cards.
+  skips System), switch (settings rows only). 28 cards. Revised same day: the labelled
+  segment raises the checked button itself (no measured knob), knob motion is left-based,
+  and the icon caption matches the CSS — it shows the theme you're in. Ported to
+  `@mythicalos/{ui-core,preact-ui,react-ui}` (unpublished 0.5.0/0.6.0/0.4.0).
 
 - **The tags family folds back into Chip** (maintainer redesign, same day it shipped):
   `ds/components-tags.html` removed; `ds/components-chip.html` is now the family card —
