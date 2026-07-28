@@ -8,6 +8,12 @@ per-row in `COMPONENTS.md` and are independent of the package version.
 
 ## Unreleased
 
+- **`--my-tone-ink`** — label ink on status-tone fills, for the new tone-filled button
+  (`.btn--tone` + `data-tone`, ships in `@mythicalos/ui-core`; spec originated pane-side as
+  `SPEC-btn-tone.md` during the mockup rewire). `#FFFFFF` in light (the AA-nudged status hues
+  are deep enough for white); heritage flips it to `var(--my-bg)` because the heritage status
+  hues are light. `data-tone="error"` remains governed by rule 9 — danger fills only in the
+  lifecycle confirm flows.
 - **`--my-hairline`** — the sub-border separator rule, moved upstream from the product
   mockups: SAGA defined `color-mix(in oklab, var(--my-border) 72%, var(--my-surface))`
   locally; SKULD and BROKKR consumed `var(--my-hairline)` **undefined** (28 + 3 uses whose
