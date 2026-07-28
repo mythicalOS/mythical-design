@@ -51,7 +51,7 @@ family shell) and their live previews live in the component library repo, not
 here — this repo is deliberately stable and framework-free.
 
 **`ds/` is the exception, and it is load-bearing: it is the sync source for the
-claude.ai Design pane.** The 28 self-contained cards there are what the pane
+claude.ai Design pane.** The 27 self-contained cards there are what the pane
 renders — do not delete them as stale duplicates of the component library's own
 preview cards. The component library keeps its own smaller card set for local
 preview and drift control against its component sources; the two sets overlap but

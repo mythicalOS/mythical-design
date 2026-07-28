@@ -6,6 +6,15 @@ maintainer-authored amendments recorded as numbered rows in the `design.md` §8 
 (the log, not the version number, is the lock ledger). Component spec versions live
 per-row in `COMPONENTS.md` and are independent of the package version.
 
+## Unreleased
+
+- **The tags family folds back into Chip** (maintainer redesign, same day it shipped):
+  `ds/components-tags.html` removed; `ds/components-chip.html` is now the family card —
+  `.my-chip` (pill, neutral-by-default on `--my-surface-hover`, 8 tones, xs/md, dot/count/
+  removable ×), `.my-chip-flag` (squared mono machine facts), `.my-chip-dd` (the interactive
+  member). Registry row updated; the Tag-vs-Chip decision is closed.
+- `ds/foundations-shape.html`: rule-10 wording says "chips", matching the retired Tag concept.
+
 ## 0.5.15 — 2026-07-28
 
 - **`--my-fs-nano: 10px`** — a new smallest type-scale point at the low end of the

@@ -10,7 +10,7 @@
 :root{--my-font-ui: Inter, -apple-system, "Segoe UI", Roboto, sans-serif; --my-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace}
 </style>
 <!-- /@dsFonts -->
-<title>Chip — the original badge, and how it differs from Tag</title><style>
+<title>Chip — tones, sizes &amp; variants</title><style>
 :root{
   --my-bg:#FAF9F6; --my-surface:#FFFFFF; --my-ink:#16181D; --my-muted:#5A5F6A;
   --my-border:#E7E3DB; --my-control-border:#878E9B; --my-surface-hover:#F6F4EF;
@@ -18,8 +18,9 @@
   --my-ok:#1A7F4B; --my-ok-soft:#E4F2EA; --my-warn:#B45309; --my-warn-soft:#FAEEDD;
   --my-error:#B3261E; --my-error-soft:#FAE9E8; --my-info:#2B5FAA; --my-info-soft:#E8EEF8;
   --my-disabled-bg:#F1EFE9; --my-disabled-ink:#9AA0AC;
-  --my-r-card:10px; --my-r-pill:99px;
+  --my-r-control:6px; --my-r-card:10px; --my-r-pill:99px;
   --my-fw-medium:500; --my-fw-bold:650; --my-fs-micro:11px; --my-fs-nano:10px;
+  --my-t-fast:120ms ease;
 }
 *{box-sizing:border-box}
 body{margin:0;padding:26px 30px;background:var(--my-bg);color:var(--my-ink);font:14px/1.5 var(--my-font-ui);-webkit-font-smoothing:antialiased}
@@ -32,70 +33,154 @@ h3{font-size:var(--my-fs-micro);font-weight:var(--my-fw-bold);letter-spacing:.4p
 .row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
 .cap{font-size:11px;color:var(--my-muted);margin-top:14px;max-width:860px}
 code{font-family:var(--my-font-mono);font-size:11px;background:var(--my-disabled-bg);border-radius:4px;padding:1px 5px}
-table{border-collapse:collapse;font-size:12.5px}
-th,td{text-align:left;padding:6px 14px 6px 0;border-bottom:1px solid var(--my-border);vertical-align:top}
-th{font-size:var(--my-fs-micro);font-weight:var(--my-fw-bold);letter-spacing:.4px;text-transform:uppercase;color:var(--my-muted)}
 
-/* ── CHIP: the original badge, exactly as @mythicalos/preact-ui ships it. ── */
-.chip{display:inline-flex;align-items:center;gap:5px;border-radius:var(--my-r-pill);
-  padding:2px 9px;font-size:var(--my-fs-micro);font-weight:var(--my-fw-bold);letter-spacing:.3px;
-  background:var(--my-surface-hover);color:var(--my-muted);white-space:nowrap}
+/* ── CHIP — the canonical non-interactive label. Pill shape (rule 10), soft fill, no border. ── */
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:var(--my-r-pill);border:1px solid transparent;
+  background:var(--my-surface-hover);color:var(--my-muted);
+  padding:3px 11px;font-size:var(--my-fs-micro);font-weight:var(--my-fw-bold);white-space:nowrap}
 .chip.accent{background:var(--my-accent-soft);color:var(--my-accent-strong)}
 .chip.ok{background:var(--my-ok-soft);color:var(--my-ok)}
 .chip.warn{background:var(--my-warn-soft);color:var(--my-warn)}
 .chip.err{background:var(--my-error-soft);color:var(--my-error)}
 .chip.info{background:var(--my-info-soft);color:var(--my-info)}
+.chip.outline{background:var(--my-surface);border-color:var(--my-border);color:var(--my-muted)}
+.chip.empty{background:var(--my-disabled-bg);color:var(--my-muted);border:1px dashed var(--my-control-border)}
+/* sizes */
+.chip.xs{font-size:var(--my-fs-nano);padding:2px 8px;gap:5px}
+.chip.md{font-size:12.5px;padding:5px 13px;font-weight:var(--my-fw-medium)}
+/* variants */
+.chip .dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
+.chip .num{font-family:var(--my-font-mono);font-variant-numeric:tabular-nums}
+.chip .x{margin-right:-3px;margin-left:1px;padding:0 2px;color:currentColor;opacity:.8;cursor:pointer;font-size:12px;line-height:1;border-radius:var(--my-r-pill);transition:opacity var(--my-t-fast)}
+.chip .x:hover{opacity:1}
+.chip .x:focus-visible{outline:2px solid var(--my-accent);outline-offset:2px}
 
-/* the Tag family, for the side-by-side only — canonical spec: components-tags.html */
-.tag{display:inline-flex;align-items:center;gap:6px;border-radius:var(--my-r-pill);border:1px solid transparent;
-  background:var(--my-accent-soft);color:var(--my-accent-strong);
-  padding:3px 11px;font-size:var(--my-fs-micro);font-weight:var(--my-fw-bold);white-space:nowrap}
-.tag.ok{background:var(--my-ok-soft);color:var(--my-ok)}
-.tag.neutral{background:var(--my-disabled-bg);color:var(--my-muted)}
-.tag.outline{background:var(--my-surface);border-color:var(--my-border);color:var(--my-muted)}
-.tag .dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
-.tag .num{font-family:var(--my-font-mono);font-variant-numeric:tabular-nums}
+/* ── CHIP-FLAG — squared, mono, uppercase: machine facts (kinds, git counters, diff status). ── */
+.chip-flag{display:inline-flex;align-items:center;gap:5px;font-family:var(--my-font-mono);font-size:var(--my-fs-nano);font-weight:700;
+  letter-spacing:.4px;border-radius:4px;padding:2px 7px;background:var(--my-accent-soft);color:var(--my-accent-strong);white-space:nowrap}
+.chip-flag.ok{background:var(--my-ok-soft);color:var(--my-ok)}
+.chip-flag.warn{background:var(--my-warn-soft);color:var(--my-warn)}
+.chip-flag.err{background:var(--my-error-soft);color:var(--my-error)}
+.chip-flag.neutral{background:var(--my-disabled-bg);color:var(--my-muted)}
+
+/* ── CHIP-DD — the interactive sibling: control shape, control-border, hover invite. ── */
+.chip-dd{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--my-control-border);border-radius:var(--my-r-control);
+  padding:5px 12px;font-size:12.5px;background:var(--my-surface);color:var(--my-ink);cursor:pointer;transition:background var(--my-t-fast)}
+.chip-dd:hover{background:var(--my-surface-hover)}
+.chip-dd:focus-visible{outline:2px solid var(--my-accent);outline-offset:2px}
+.chip-dd b{font-weight:var(--my-fw-medium)}
+.chip-dd .car{color:var(--my-muted);font-size:var(--my-fs-nano)}
+.chip-dd.sel{border-color:var(--my-accent);background:var(--my-accent-soft);color:var(--my-accent-strong)}
+.chip-dd[aria-disabled="true"]{background:var(--my-disabled-bg);color:var(--my-disabled-ink);border-color:var(--my-border);cursor:not-allowed}
+
+/* in-situ examples */
+.situ{display:flex;gap:12px;flex-wrap:wrap}
+.mcard{width:326px;background:var(--my-surface);border:1px solid var(--my-border);border-radius:var(--my-r-card);padding:12px}
+.mhead{display:flex;gap:7px;align-items:center}
+.mbody{font-size:12.5px;line-height:1.5;margin:8px 0}
+.mprov{font-family:var(--my-font-mono);font-size:10.5px;color:var(--my-muted)}
+.gitchip{display:inline-flex;gap:8px;align-items:center;font-family:var(--my-font-mono);font-size:12px;
+  border:1px solid var(--my-border);border-radius:var(--my-r-control);padding:6px 10px;background:var(--my-surface)}
+.fname{display:flex;align-items:center;gap:9px;font-family:var(--my-font-mono);font-size:14px}
+.dont{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1120px}
+.dont .panel{margin:0}
+.yes,.no{font-size:var(--my-fs-micro);font-weight:var(--my-fw-bold);letter-spacing:.4px;text-transform:uppercase}
+.yes{color:var(--my-ok)}.no{color:var(--my-error)}
 </style></head><body>
 
 <h2>Chip</h2>
-<p class="lede">The original badge — a pill with a soft fill and a word, shipped in <code>@mythicalos/preact-ui</code> since the first atom set. One size, six tones, no variants. It predates the <b>Tags &amp; chips</b> family (<code>components-tags.html</code>), whose <b>Tag</b> covers the same ground with more range — the overlap is real and the relationship is an open registry decision, recorded below.</p>
+<p class="lede">One family, three jobs — the canonical badge shipped in <code>@mythicalos/preact-ui</code>, now carrying the full range. <b>Chip</b> = pill, soft fill, human label, never clickable. <b>Chip-flag</b> = squared mono uppercase, machine facts (memory kinds, git counters, diff status). <b>Chip-dropdown</b> = the only interactive member: control radius, <code>--my-control-border</code>, hover. Shape carries the affordance, so a user never has to guess whether a label is a button.</p>
 
 <div class="panel">
   <h3>Tones — <code>.my-chip</code></h3>
   <div class="grid">
     <span class="lbl">neutral<br>default</span>
-    <div class="row"><span class="chip">draft</span><span class="chip">worker</span><span class="chip">v0.4.0</span></div>
+    <div class="row"><span class="chip">draft</span><span class="chip">worker</span><span class="chip">v0.5.4</span><span class="chip">daemon <span class="num">12</span></span></div>
     <span class="lbl">.accent</span>
-    <div class="row"><span class="chip accent">reviewed</span><span class="chip accent">pinned</span></div>
+    <div class="row"><span class="chip accent">reviewed</span><span class="chip accent"><span class="dot"></span>skadi</span></div>
     <span class="lbl">.ok</span>
-    <div class="row"><span class="chip ok">active</span><span class="chip ok">merged</span></div>
+    <div class="row"><span class="chip ok"><span class="dot"></span>active</span><span class="chip ok">merged</span></div>
     <span class="lbl">.warn</span>
-    <div class="row"><span class="chip warn">stale</span><span class="chip warn">degraded</span></div>
+    <div class="row"><span class="chip warn"><span class="dot"></span>stale</span><span class="chip warn">needs rebase</span></div>
     <span class="lbl">.error</span>
-    <div class="row"><span class="chip err">failed</span><span class="chip err">blocked</span></div>
+    <div class="row"><span class="chip err"><span class="dot"></span>failed</span><span class="chip err">blocked</span></div>
     <span class="lbl">.info</span>
     <div class="row"><span class="chip info">queued</span><span class="chip info">draft</span></div>
+    <span class="lbl">.outline</span>
+    <div class="row"><span class="chip outline">read-only</span><span class="chip outline">v0.5.4</span></div>
+    <span class="lbl">.empty</span>
+    <div class="row"><span class="chip empty">+ add tag</span><span class="chip empty">no tier</span></div>
   </div>
-  <p class="cap">Note the neutral default rides <code>--my-surface-hover</code>, not <code>--my-disabled-bg</code> — a Chip at rest reads as furniture, not as a disabled control. Like every pill, never clickable (rule 10).</p>
+  <p class="cap">The neutral default rides <code>--my-surface-hover</code>, not <code>--my-disabled-bg</code> — a Chip at rest reads as furniture, not as a disabled control. Status tones follow rule 7: a soft fill never carries meaning alone; pair it with the word, or a dot plus the word. Amber lives only in <code>--my-warn</code>.</p>
 </div>
 
 <div class="panel">
-  <h3>Chip vs Tag — the same words, both families</h3>
+  <h3>Sizes &amp; variants</h3>
   <div class="grid">
-    <span class="lbl">Chip</span>
-    <div class="row"><span class="chip">worker</span><span class="chip ok">active</span><span class="chip">v0.4.0</span></div>
-    <span class="lbl">Tag</span>
-    <div class="row"><span class="tag neutral">worker</span><span class="tag ok"><span class="dot"></span>active</span><span class="tag outline">v0.4.0</span></div>
+    <span class="lbl">.xs · 10px</span>
+    <div class="row"><span class="chip xs accent">lesson</span><span class="chip xs ok"><span class="dot"></span>live</span><span class="chip xs">201d</span></div>
+    <span class="lbl">default · 11px</span>
+    <div class="row"><span class="chip accent">lesson</span><span class="chip ok"><span class="dot"></span>live</span><span class="chip">201d</span></div>
+    <span class="lbl">.md · 12.5px</span>
+    <div class="row"><span class="chip md accent">lesson</span><span class="chip md ok"><span class="dot"></span>live</span><span class="chip md">201d</span></div>
+    <span class="lbl">with count</span>
+    <div class="row"><span class="chip accent">records <span class="num">248</span></span><span class="chip warn">conflicts <span class="num">3</span></span></div>
+    <span class="lbl">removable</span>
+    <div class="row"><span class="chip accent">skadi<span class="x" role="button" tabindex="0" aria-label="Remove skadi">×</span></span><span class="chip">control-room<span class="x" role="button" tabindex="0" aria-label="Remove control-room">×</span></span></div>
   </div>
-  <table style="margin-top:14px">
-    <tr><th></th><th>Chip</th><th>Tag</th></tr>
-    <tr><td class="lbl">tones</td><td>6 (neutral · accent · ok · warn · error · info)</td><td>8 (adds outline · empty)</td></tr>
-    <tr><td class="lbl">sizes</td><td>one</td><td>xs · default · md</td></tr>
-    <tr><td class="lbl">variants</td><td>none</td><td>leading dot · mono count · removable ×</td></tr>
-    <tr><td class="lbl">neutral resting fill</td><td><code>--my-surface-hover</code></td><td><code>--my-disabled-bg</code></td></tr>
-    <tr><td class="lbl">letter-spacing</td><td>.3px</td><td>none</td></tr>
-    <tr><td class="lbl">padding</td><td>2px 9px</td><td>3px 11px (default)</td></tr>
-  </table>
-  <p class="cap"><b>Open decision:</b> Tag is a superset of Chip in everything but the neutral resting fill and the tighter metrics. Whether Chip is ratified as the quieter, variant-free badge or deprecated toward Tag is the maintainer's call — recorded in the registry (<code>COMPONENTS.md</code>). Until it is made, new work should prefer <b>Tag</b>; existing Chip consumers do not migrate speculatively.</p>
+  <p class="cap">The <code>×</code> is the one thing inside a Chip that may be clicked — a focusable child, not a clickable chip. Removal targets stay ≥24px tall in real UI; use <code>.md</code> where the chip list is the primary control. The count is never opacity-dimmed — the ok/warn soft pairs sit near AA already, so the mono face alone carries its hierarchy.</p>
+</div>
+
+<div class="panel">
+  <h3>Flags — <code>.my-chip-flag</code> · machine facts, squared, mono</h3>
+  <div class="grid">
+    <span class="lbl">kinds</span>
+    <div class="row"><span class="chip-flag">LESSON</span><span class="chip-flag">DECISION</span><span class="chip-flag neutral">NOTE</span></div>
+    <span class="lbl">git counters</span>
+    <div class="row"><span class="chip-flag warn">2↓ behind</span><span class="chip-flag warn">4 uncommitted</span><span class="chip-flag err">1 unpushed</span><span class="chip-flag ok">clean ✓</span></div>
+    <span class="lbl">diff status</span>
+    <div class="row"><span class="chip-flag warn">M</span><span class="chip-flag ok">A</span><span class="chip-flag err">D</span><span class="chip-flag neutral">U</span></div>
+  </div>
+  <p class="cap">Flags are honest counters, never decoration: warn-soft for behind/uncommitted, error-soft only for something that can be lost, ok-soft for a clean tree.</p>
+</div>
+
+<div class="panel">
+  <h3>Chip dropdown — <code>.my-chip-dd</code> · the interactive member</h3>
+  <div class="row">
+    <span class="chip-dd" role="button" tabindex="0">model <b>sonnet-4.6</b> <span class="car">▾</span></span>
+    <span class="chip-dd sel" role="button" tabindex="0">tier <b>skadi</b> <span class="car">▾</span></span>
+    <span class="chip-dd" aria-disabled="true">branch <b>main</b> <span class="car">▾</span></span>
+    <span class="chip outline">worktree <b>read-only</b></span>
+  </div>
+  <p class="cap">Editable → squared <code>--my-r-control</code> + <code>--my-control-border</code> + hover. Not editable → pill chip on <code>--my-border</code>, no hover invite (rules 10 &amp; 21).</p>
+</div>
+
+<div class="panel">
+  <h3>In situ</h3>
+  <div class="situ">
+    <div class="mcard">
+      <div class="mhead"><span class="chip-flag">LESSON</span><span class="chip xs outline"><span class="dot"></span>skadi</span></div>
+      <div class="mbody">Maintainer prefers findings folded incrementally — never batch review rounds into one mega-commit.</div>
+      <div class="mprov">records/skadi-003 · recalled 0× · 201d old</div>
+    </div>
+    <div class="mcard">
+      <div class="fname"><b>daemon/gaps.rs</b><span class="chip xs warn">modified</span></div>
+      <div class="mbody"><span class="gitchip">⎇ feat/control-room <span class="chip-flag warn">4 uncommitted</span> <span class="chip-flag err">1 unpushed</span></span></div>
+      <div class="mprov">+128 −14 · 2m ago</div>
+    </div>
+  </div>
+</div>
+
+<div class="dont">
+  <div class="panel">
+    <span class="no">Don't</span>
+    <div class="row" style="margin-top:10px"><span class="chip" style="border-radius:6px;border-color:var(--my-control-border);background:var(--my-surface);color:var(--my-ink)">reviewed</span><span class="chip" style="background:#EFA443;color:#fff">shipped</span><span class="chip err">●</span></div>
+    <p class="cap">Squared + bordered reads as a button. Saturated fills belong to buttons, not chips. A colour-only chip says nothing to a screen reader.</p>
+  </div>
+  <div class="panel">
+    <span class="yes">Do</span>
+    <div class="row" style="margin-top:10px"><span class="chip accent">reviewed</span><span class="chip ok">shipped</span><span class="chip err"><span class="dot"></span>failed</span></div>
+    <p class="cap">Pill + soft fill + a word. Tone maps to the semantic token, never to a hand-picked hex.</p>
+  </div>
 </div>
 </body></html>

@@ -50,7 +50,7 @@
   --my-fw-regular: 400; --my-fw-medium: 500; --my-fw-bold: 650;
 
   /* shape & space (cards default 10; nested rows may step 7–9;
-     r-pill = NON-interactive tags/status only — see rule 10) */
+     r-pill = NON-interactive chips/status only — see rule 10) */
   --my-r-control: 6px; --my-r-card: 10px; --my-r-modal: 16px; --my-r-pill: 99px;
   --my-sp-1: 4px; --my-sp-2: 8px; --my-sp-3: 12px; --my-sp-4: 16px;
   --my-sp-5: 24px; --my-sp-6: 32px; --my-sp-7: 48px; --my-sp-8: 64px;
@@ -83,9 +83,9 @@ code{font-family:var(--my-font-mono);font-size:12px;background:var(--my-disabled
 .ctrl-input{display:inline-flex;align-items:center;height:34px;padding:0 10px;border-radius:var(--my-r-control);border:1px solid var(--my-control-border);background:var(--my-surface);color:var(--my-ink);font-family:var(--my-font-mono);font-size:12px}
 .ctrl-chip{display:inline-flex;align-items:center;gap:6px;border-radius:var(--my-r-control);border:1px solid var(--my-control-border);background:var(--my-surface);padding:6px 10px;font-size:12px}
 .ctrl-chip .x{color:var(--my-muted)}
-.tag{display:inline-flex;align-items:center;gap:6px;border-radius:var(--my-r-pill);border:1px solid transparent;background:var(--my-accent-soft);color:var(--my-accent-strong);padding:3px 11px;font-size:11px;font-weight:var(--my-fw-bold)}
-.tag .dot{width:7px;height:7px;border-radius:50%;background:currentColor}
-.tag.ok{background:var(--my-ok-soft);color:var(--my-ok)}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:var(--my-r-pill);border:1px solid transparent;background:var(--my-accent-soft);color:var(--my-accent-strong);padding:3px 11px;font-size:11px;font-weight:var(--my-fw-bold)}
+.chip .dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+.chip.ok{background:var(--my-ok-soft);color:var(--my-ok)}
 </style></head><body>
 
 <h3>Radius scale</h3>
@@ -95,12 +95,12 @@ code{font-family:var(--my-font-mono);font-size:12px;background:var(--my-disabled
   <div class="radchip" style="border-radius:7px">row 7–9</div>
   <div class="radchip" style="border-radius:var(--my-r-card)">card 10</div>
   <div class="radchip" style="border-radius:var(--my-r-modal)">modal / hero 16</div>
-  <div class="radchip" style="border-radius:var(--my-r-pill)">pill 99 · non-interactive tags only</div>
+  <div class="radchip" style="border-radius:var(--my-r-pill)">pill 99 · non-interactive chips only</div>
   <span class="note" style="margin:0">motion: <code>--my-t-fast 120ms ease</code> · <code>--my-t-base 200ms ease</code></span>
 </div>
 
 <h3>Interactability — decision #20</h3>
-<div class="note"><b>Shape encodes interactability (v0.5.1, rule 10).</b> <code>--my-r-pill</code> is for NON-interactive status tags/labels only. Everything clickable — buttons, inputs, selects, editable chips, toggles — is squared <code>--my-r-control</code>. A pill silhouette must never invite a click, so an interactive control must never look like one. <b>Boundary follows shape (v0.5.4, decision #21 / rule 11):</b> interactive controls rest on <code>--my-control-border</code> (≥3:1 non-text contrast, WCAG 1.4.11, both themes); <code>--my-border</code> is for dividers, cards and non-interactive outlines only — hover/focus/error states unchanged.</div>
+<div class="note"><b>Shape encodes interactability (v0.5.1, rule 10).</b> <code>--my-r-pill</code> is for NON-interactive status chips/labels only. Everything clickable — buttons, inputs, selects, editable chips, toggles — is squared <code>--my-r-control</code>. A pill silhouette must never invite a click, so an interactive control must never look like one. <b>Boundary follows shape (v0.5.4, decision #21 / rule 11):</b> interactive controls rest on <code>--my-control-border</code> (≥3:1 non-text contrast, WCAG 1.4.11, both themes); <code>--my-border</code> is for dividers, cards and non-interactive outlines only — hover/focus/error states unchanged.</div>
 <div class="demo">
   <span class="micro">Interactive — squared <code>--my-r-control 6</code></span>
   <span class="ctrl">Save &amp; apply</span>
@@ -110,9 +110,9 @@ code{font-family:var(--my-font-mono);font-size:12px;background:var(--my-disabled
 </div>
 <div class="demo">
   <span class="micro">Non-interactive — pill <code>--my-r-pill 99</code></span>
-  <span class="tag ok"><span class="dot"></span>running</span>
-  <span class="tag">model/claude</span>
-  <span class="tag">asap</span>
+  <span class="chip ok"><span class="dot"></span>running</span>
+  <span class="chip">model/claude</span>
+  <span class="chip">asap</span>
 </div>
 
 </body></html>
