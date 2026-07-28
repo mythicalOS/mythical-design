@@ -6,7 +6,7 @@ maintainer-authored amendments recorded as numbered rows in the `design.md` §8 
 (the log, not the version number, is the lock ledger). Component spec versions live
 per-row in `COMPONENTS.md` and are independent of the package version.
 
-## Unreleased
+## 0.5.16 — 2026-07-28
 
 - **`--my-ok` / `--my-warn` (light) darkened ~2%** — #1A7F4B→#197C4A, #B45309→#B05109 — so
   their soft pairs clear AA 4.5:1 for small text (4.35→4.52, 4.39→4.55); hue unchanged,
