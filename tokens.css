@@ -48,6 +48,12 @@
      vs surface+bg (WCAG 1.4.11); --my-border stays for dividers/cards.
      Measured: 3.3:1 vs surface / 3.1:1 vs bg */
   --my-track: #EDEAE3;         /* v0.5 — gauge/meter rails, distribution bars */
+  --my-hairline: color-mix(in oklab, var(--my-border) 72%, var(--my-surface));
+     /* v0.5.17 — the sub-border rule for dense table rows/list separators (softer than
+        --my-border). Moved upstream from the product mockups: SAGA defined exactly this
+        recipe locally while SKULD/BROKKR consumed the token UNDEFINED (borders silently
+        fell back to currentColor). Derived from border+surface, so it re-resolves per
+        theme on its own — deliberately NOT redefined in the dark block. */
   --my-ink: #16181D;
   --my-muted: #5A5F6A;
 

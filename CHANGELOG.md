@@ -6,6 +6,15 @@ maintainer-authored amendments recorded as numbered rows in the `design.md` §8 
 (the log, not the version number, is the lock ledger). Component spec versions live
 per-row in `COMPONENTS.md` and are independent of the package version.
 
+## Unreleased
+
+- **`--my-hairline`** — the sub-border separator rule, moved upstream from the product
+  mockups: SAGA defined `color-mix(in oklab, var(--my-border) 72%, var(--my-surface))`
+  locally; SKULD and BROKKR consumed `var(--my-hairline)` **undefined** (28 + 3 uses whose
+  borders fell back to `currentColor`) — upstreaming fixes both via the next design-system
+  binding refresh, no page edits. Derived from border+surface, so one `:root` definition
+  adapts per theme (and stays out of the theme-flipping token set by construction).
+
 ## 0.5.16 — 2026-07-28
 
 - **`--my-ok` / `--my-warn` (light) darkened ~2%** — #1A7F4B→#197C4A, #B45309→#B05109 — so
