@@ -6,7 +6,12 @@ maintainer-authored amendments recorded as numbered rows in the `design.md` §8 
 (the log, not the version number, is the lock ledger). Component spec versions live
 per-row in `COMPONENTS.md` and are independent of the package version.
 
-## Unreleased
+## 0.5.14 — 2026-07-28
+
+A docs-and-cards release. **No token change — `tokens.css` is byte-identical to
+0.5.13.** The patch version is claimed because `design.md` and `COMPONENTS.md`
+both ship in the package and both changed; the `ds/` card work rides along but is
+outside the npm `files` whitelist and reaches no consumer.
 
 The registry now says which components are PACKAGED and which live in exactly one
 product — it had drifted in both directions, which made it undispatchable.
@@ -27,10 +32,7 @@ product — it had drifted in both directions, which made it undispatchable.
   dispatch prose follows.
 
 Two new preview cards, a select popup fix, and the family narrowing to four
-products. No token change. The card work is `ds/`-only (outside the npm `files`
-whitelist, so it does not reach consumers), but the family change also edits
-`design.md` and `COMPONENTS.md`, **which do ship** — so the next release claims a
-patch version rather than the "no version" this section previously carried.
+products.
 
 - **The family is four products** — brokkr, skuld, saga, asgard. The fifth is
   retired and is not to be reintroduced in this book, its cards, or any consumer.
