@@ -57,9 +57,10 @@
   --my-accent-strong: #0B5450; /* text-safe on light (AA) */
   --my-accent-soft: #E0F0EE;   /* fills, hovers, chips */
 
-  /* status */
-  --my-ok: #1A7F4B;
-  --my-warn: #B45309;          /* amber lives HERE and only here */
+  /* status (v0.5.16 — ok/warn darkened ~2% so their soft pairs clear AA 4.5:1 at small text:
+     ok 4.35→4.52 on --my-ok-soft, warn 4.39→4.55 on --my-warn-soft; hue unchanged) */
+  --my-ok: #197C4A;
+  --my-warn: #B05109;          /* amber lives HERE and only here */
   --my-error: #B3261E;
   --my-info: #2B5FAA;
 
@@ -156,6 +157,9 @@
       status chips/labels only. Everything clickable — buttons, inputs, selects,
       editable chips, toggles — is squared --my-r-control; a pill never invites
       a click, so an interactive control must never look like one.
+      Ruled exception (maintainer, 2026-07-28): the THEME-TOGGLE family keeps its
+      card's pill — segmented track/options/knob and the switch track — as drawn;
+      the inputs Toggle stays squared. Scoped to that family; not a precedent.
   11. Control boundaries use --my-control-border (≥3:1, WCAG 1.4.11 non-text
       contrast); --my-border is for dividers, cards and non-interactive outlines
       only; hover/focus/error states unchanged. */

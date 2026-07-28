@@ -8,6 +8,13 @@ per-row in `COMPONENTS.md` and are independent of the package version.
 
 ## Unreleased
 
+- **`--my-ok` / `--my-warn` (light) darkened ~2%** — #1A7F4B→#197C4A, #B45309→#B05109 — so
+  their soft pairs clear AA 4.5:1 for small text (4.35→4.52, 4.39→4.55); hue unchanged,
+  visually near-invisible. Maintainer ruling 2026-07-28, decided on measured evidence.
+- **Rule 10 gains its first ruled exception** (maintainer, 2026-07-28): the theme-toggle
+  family keeps its card's pill — segmented track/options/knob and switch track; the inputs
+  Toggle stays squared. Scoped, not a precedent. Same ruling round confirmed the chip count
+  stays **undimmed** (any opacity puts the small mono digits under AA on every tone).
 - **`--my-shadow-knob`** — the raised-knob shadow (theme toggle's segmented knob and switch
   knob), light + heritage values: a lift of value, never a glow.
 - **`ds/components-theme-toggle.html`** — new card (maintainer-authored in the Design pane):
