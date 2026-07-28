@@ -86,7 +86,7 @@
   --my-fw-bold: 650; /* @kind font */
 
   /* shape & space (cards default 10; nested rows may step 7–9;
-     r-pill = NON-interactive tags/status only — see rule 10) */
+     r-pill = NON-interactive chips/status only — see rule 10) */
   --my-r-control: 6px; --my-r-card: 10px; --my-r-modal: 16px; --my-r-pill: 99px;
   --my-sp-1: 4px; --my-sp-2: 8px; --my-sp-3: 12px; --my-sp-4: 16px;
   --my-sp-5: 24px; --my-sp-6: 32px; --my-sp-7: 48px; --my-sp-8: 64px;
@@ -153,7 +153,7 @@
    9. Danger FILLS exist only in the lifecycle confirm dialogs; danger is outline
       everywhere else. Destructive confirms require a typed name match.
   10. Shape encodes interactability (v0.5.1): --my-r-pill is for NON-interactive
-      status tags/labels only. Everything clickable — buttons, inputs, selects,
+      status chips/labels only. Everything clickable — buttons, inputs, selects,
       editable chips, toggles — is squared --my-r-control; a pill never invites
       a click, so an interactive control must never look like one.
   11. Control boundaries use --my-control-border (≥3:1, WCAG 1.4.11 non-text
