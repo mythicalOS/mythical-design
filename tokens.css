@@ -81,7 +81,9 @@
      the flag's mono face. Same rules as micro — 650 weight, never body text. */
   --my-fs-caption: 12px; --my-fs-mono: 13px; --my-fs-body: 14px; --my-fs-body-lg: 16px;
   --my-fs-h3: 20px; --my-fs-h2: 24px; --my-fs-h1: 32px; --my-fs-display: 44px;
-  --my-fw-regular: 400; --my-fw-medium: 500; --my-fw-bold: 650;
+  --my-fw-regular: 400; /* @kind font */
+  --my-fw-medium: 500; /* @kind font */
+  --my-fw-bold: 650; /* @kind font */
 
   /* shape & space (cards default 10; nested rows may step 7–9;
      r-pill = NON-interactive tags/status only — see rule 10) */
@@ -90,7 +92,8 @@
   --my-sp-5: 24px; --my-sp-6: 32px; --my-sp-7: 48px; --my-sp-8: 64px;
 
   /* motion (v0.5 retune) */
-  --my-t-fast: 120ms ease; --my-t-base: 200ms ease;
+  --my-t-fast: 120ms ease; /* @kind other */
+  --my-t-base: 200ms ease; /* @kind other */
 
   /* state & feedback (derived from locked hues) */
   --my-ink-hover: #2B2F37;        /* ink-fill controls on hover */
