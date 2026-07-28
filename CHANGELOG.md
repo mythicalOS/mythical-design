@@ -6,6 +6,16 @@ maintainer-authored amendments recorded as numbered rows in the `design.md` §8 
 (the log, not the version number, is the lock ledger). Component spec versions live
 per-row in `COMPONENTS.md` and are independent of the package version.
 
+## 0.5.15 — 2026-07-28
+
+- **`--my-fs-nano: 10px`** — a new smallest type-scale point at the low end of the
+  micro-label band (§4's 9.5–11px). Minted so the tags family's `xs` size and the
+  flag's mono face resolve through a token instead of snapping up to `--my-fs-micro`.
+- `ds/components-tags.html`: the count (`.num`) is no longer opacity-dimmed — the
+  `ok`/`warn` soft pairs sit at ≈4.4:1 undimmed, so any dimming pushes small mono
+  digits below AA; hierarchy stays with the mono face. The removal `×` rests at
+  `.8` (was `.6`) so the control clears 3:1 non-text contrast on every tone.
+
 ## 0.5.14 — 2026-07-28
 
 A docs-and-cards release. **No token change — `tokens.css` is byte-identical to
