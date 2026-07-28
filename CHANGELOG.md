@@ -8,6 +8,12 @@ per-row in `COMPONENTS.md` and are independent of the package version.
 
 ## Unreleased
 
+- **`--my-shadow-knob`** — the raised-knob shadow (theme toggle's segmented knob and switch
+  knob), light + heritage values: a lift of value, never a glow.
+- **`ds/components-theme-toggle.html`** — new card (maintainer-authored in the Design pane):
+  one component, three members — segmented (System first-class), icon (sun↔moon cross-fade,
+  skips System), switch (settings rows only). 28 cards.
+
 - **The tags family folds back into Chip** (maintainer redesign, same day it shipped):
   `ds/components-tags.html` removed; `ds/components-chip.html` is now the family card —
   `.my-chip` (pill, neutral-by-default on `--my-surface-hover`, 8 tones, xs/md, dot/count/

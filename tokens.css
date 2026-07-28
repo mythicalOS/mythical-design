@@ -105,6 +105,7 @@
   --my-error-soft: #FAE9E8; --my-info-soft: #E8EEF8;   /* toast/banner fills — always with icon+label */
   --my-scrim: rgba(11, 12, 15, .45);
   --my-shadow-modal: 0 16px 48px rgba(22, 24, 29, .16);
+  --my-shadow-knob: 0 1px 2px rgba(22, 24, 29, .16), 0 2px 6px rgba(22, 24, 29, .10); /* v0.5.16 — raised knobs (theme toggle segmented/switch): a lift of value, never a glow */
 }
 
 /* dark = "heritage" (terminal-native). Applied via [data-theme="dark"]. */
@@ -135,6 +136,7 @@
   --my-error-soft: #341316; --my-info-soft: #15233A;
   --my-scrim: rgba(0, 0, 0, .55);
   --my-shadow-modal: 0 16px 48px rgba(0, 0, 0, .5);
+  --my-shadow-knob: 0 1px 2px rgba(0, 0, 0, .5), 0 2px 6px rgba(0, 0, 0, .35);
 }
 
 /* Rules of use (enforced in review, not just documented):
