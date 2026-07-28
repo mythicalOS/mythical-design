@@ -41,21 +41,20 @@ h3{font-size:var(--my-fs-micro);font-weight:var(--my-fw-bold);letter-spacing:.4p
 code{font-family:var(--my-font-mono);font-size:11px;background:var(--my-disabled-bg);border-radius:4px;padding:1px 5px}
 .mode{font-family:var(--my-font-mono);font-size:10px;letter-spacing:.4px;text-transform:uppercase;color:var(--my-muted)}
 .tt-seg{display:inline-flex;align-items:center;gap:2px;padding:3px;background:var(--my-track);border:1px solid var(--my-border);border-radius:var(--my-r-pill);position:relative}
-.tt-seg button{position:relative;z-index:1;display:grid;place-items:center;width:30px;height:24px;padding:0;border:0;background:none;color:var(--my-muted);border-radius:var(--my-r-pill);cursor:pointer;transition:color var(--my-t-fast)}
-.tt-seg button{line-height:1}
+.tt-seg button{position:relative;z-index:1;display:grid;place-items:center;width:30px;height:24px;padding:0;border:0;background:none;color:var(--my-muted);border-radius:var(--my-r-pill);cursor:pointer;line-height:1;transition:color var(--my-t-fast)}
 .tt-seg button svg{width:14px;height:14px;display:block;flex:none}
 .tt-seg button:hover{color:var(--my-ink)}
 .tt-seg button:focus-visible{outline:2px solid var(--my-accent);outline-offset:2px}
 .tt-seg button[aria-checked="true"]{color:var(--my-accent-strong)}
-.tt-seg .knob{position:absolute;top:3px;left:3px;width:30px;height:24px;border-radius:var(--my-r-pill);background:var(--my-surface);box-shadow:var(--my-shadow-knob);transition:transform var(--my-t-base);z-index:0}
-.tt-seg[data-i="1"] .knob{transform:translateX(32px)}
-.tt-seg[data-i="2"] .knob{transform:translateX(64px)}
+.tt-seg .knob{position:absolute;top:3px;left:3px;width:30px;height:24px;border-radius:var(--my-r-pill);background:var(--my-surface);box-shadow:var(--my-shadow-knob);transition:left var(--my-t-base),width var(--my-t-base);z-index:0}
+.tt-seg[data-i="1"] .knob{left:35px}
+.tt-seg[data-i="2"] .knob{left:67px}
 .tt-seg.lab button{width:auto;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 11px;font-size:12px;line-height:1;font-weight:var(--my-fw-medium);font-family:inherit}
-.tt-seg.lab .knob{width:var(--w,78px)}
-.tt-seg.lab[data-i="1"] .knob{transform:translateX(var(--x1,80px))}
-.tt-seg.lab[data-i="2"] .knob{transform:translateX(var(--x2,150px))}
+.tt-seg.lab .knob{display:none}
+.tt-seg.lab button{transition:background var(--my-t-fast),color var(--my-t-fast),box-shadow var(--my-t-fast)}
+.tt-seg.lab button[aria-checked="true"]{background:var(--my-surface);box-shadow:var(--my-shadow-knob)}
 .tt-icon{display:grid;place-items:center;width:30px;height:30px;padding:0;border:1px solid transparent;border-radius:var(--my-r-control);background:none;color:var(--my-muted);cursor:pointer;transition:background var(--my-t-fast),color var(--my-t-fast)}
-.tt-icon svg{width:16px;height:16px;transition:transform var(--my-t-base),opacity var(--my-t-fast)}
+.tt-icon svg{width:16px;height:16px;display:block;transition:transform var(--my-t-base),opacity var(--my-t-fast)}
 .tt-icon:hover{background:var(--my-surface-hover);color:var(--my-ink)}
 .tt-icon:focus-visible{outline:2px solid var(--my-accent);outline-offset:2px}
 .tt-icon.bord{border-color:var(--my-control-border)}
@@ -67,11 +66,11 @@ code{font-family:var(--my-font-mono);font-size:11px;background:var(--my-disabled
 .thm[data-theme="dark"] .tt-icon .stack .s{opacity:0;transform:rotate(45deg) scale(.7)}
 .tt-sw{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;color:var(--my-ink);cursor:pointer;position:relative}
 .tt-sw .tr{position:relative;width:40px;height:22px;border-radius:var(--my-r-pill);background:var(--my-track);border:1px solid var(--my-control-border);transition:background var(--my-t-base),border-color var(--my-t-base);flex:none}
-.tt-sw .kn{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--my-surface);box-shadow:var(--my-shadow-knob);display:grid;place-items:center;color:var(--my-muted);transition:transform var(--my-t-base),color var(--my-t-base)}
+.tt-sw .kn{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--my-surface);box-shadow:var(--my-shadow-knob);display:grid;place-items:center;color:var(--my-muted);transition:left var(--my-t-base),color var(--my-t-base)}
 .tt-sw .kn svg{width:9px;height:9px;display:block}
 .tt-sw input{position:absolute;opacity:0;width:0;height:0}
 .tt-sw input:checked+.tr{background:var(--my-accent-soft);border-color:var(--my-accent)}
-.tt-sw input:checked+.tr .kn{transform:translateX(18px);color:var(--my-accent-strong)}
+.tt-sw input:checked+.tr .kn{left:20px;color:var(--my-accent-strong)}
 .tt-sw input:focus-visible+.tr{outline:2px solid var(--my-accent);outline-offset:2px}
 .tt-sw[aria-disabled="true"]{color:var(--my-disabled-ink);cursor:not-allowed}
 .tt-sw[aria-disabled="true"] .tr{background:var(--my-disabled-bg);border-color:var(--my-border)}
@@ -137,7 +136,7 @@ a{color:var(--my-accent-strong)}a:hover{color:var(--my-accent)}
 <span class="lbl">disabled</span>
 <div class="row"><label class="tt-sw" aria-disabled="true"><input type="checkbox" disabled><span class="tr"><span class="kn" data-kn-static="sun"></span></span>Dark mode <span class="mode">· locked by admin</span></label></div>
 </div>
-<p class="cap">The icon button shows the theme you'd <em>get</em>, not the one you're in — sun on dark, moon on light — and its glyphs cross-fade with a 45° counter-rotation rather than swapping instantly.</p>
+<p class="cap">The icon button shows the theme you're <em>in</em> — sun on light, moon on dark — and its glyphs cross-fade with a 45° counter-rotation rather than swapping instantly.</p>
 </div>
 <div class="thm panel" data-theme="dark">
 <h3>Icon &amp; switch · dark</h3>
@@ -182,8 +181,8 @@ a{color:var(--my-accent-strong)}a:hover{color:var(--my-accent)}
 <div class="thm panel" data-theme="light">
 <span class="no">Don't</span>
 <div class="row" style="margin-top:12px">
-<div class="tt-seg" data-i="1" style="background:var(--my-accent);border-color:var(--my-accent)"><span class="knob" style="transform:translateX(32px);background:#EFA443"></span><button aria-checked="false" data-ico="sys"></button><button aria-checked="true" data-ico="sun"></button><button aria-checked="false" data-ico="moon"></button></div>
-<label class="tt-sw" style="pointer-events:none"><input type="checkbox" checked><span class="tr" style="background:#EFA443;border-color:#EFA443"><span class="kn" style="transform:translateX(18px)"></span></span>Dark</label>
+<div class="tt-seg" data-i="1" style="background:var(--my-accent);border-color:var(--my-accent)"><span class="knob" style="background:#EFA443"></span><button aria-checked="false" data-ico="sys"></button><button aria-checked="true" data-ico="sun"></button><button aria-checked="false" data-ico="moon"></button></div>
+<label class="tt-sw" style="pointer-events:none"><input type="checkbox" checked><span class="tr" style="background:#EFA443;border-color:#EFA443"><span class="kn" style="left:20px"></span></span>Dark</label>
 </div>
 <p class="cap">A saturated track turns a preference into a call to action. Amber is <code>--my-warn</code> only. A knob with no glyph and no label states nothing.</p>
 </div>
@@ -229,12 +228,7 @@ const syncSegs = (host, mode) => host.querySelectorAll('[data-seg]').forEach(seg
   const i = btns.findIndex(b => b.dataset.m === mode);
   if (i >= 0) selectSeg(seg, i);
 });
-const measure = () => document.querySelectorAll('.tt-seg.lab').forEach(seg => {
-  const w = [...seg.querySelectorAll('button')].map(n => n.offsetWidth);
-  seg.style.setProperty('--x1', (w[0] + 2) + 'px');
-  seg.style.setProperty('--x2', (w[0] + w[1] + 4) + 'px');
-  seg.querySelector('.knob').style.width = w[+seg.dataset.i] + 'px';
-});
+const measure = () => {};
 document.querySelectorAll('[data-seg]').forEach(seg => {
   const apply = i => { const m = selectSeg(seg, i), h = scope(seg); syncSegs(h, m); setTheme(h, m); measure(); };
   seg.addEventListener('click', e => { const b = e.target.closest('button'); if (b) apply([...seg.querySelectorAll('button')].indexOf(b)); });
