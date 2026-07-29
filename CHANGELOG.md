@@ -6,7 +6,7 @@ maintainer-authored amendments recorded as numbered rows in the `design.md` §8 
 (the log, not the version number, is the lock ledger). Component spec versions live
 per-row in `COMPONENTS.md` and are independent of the package version.
 
-## Unreleased
+## 0.5.17 — 2026-07-29
 
 - **`--my-tone-ink`** — label ink on status-tone fills, for the new tone-filled button
   (`.btn--tone` + `data-tone`, ships in `@mythicalos/ui-core`; spec originated pane-side as
