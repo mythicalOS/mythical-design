@@ -6,7 +6,7 @@ maintainer-authored amendments recorded as numbered rows in the `design.md` §8 
 (the log, not the version number, is the lock ledger). Component spec versions live
 per-row in `COMPONENTS.md` and are independent of the package version.
 
-## Unreleased
+## 0.5.18 — 2026-07-29
 
 - **`--my-term-add` / `--my-term-del`** — terminal diff hues (added/removed lines), declared in
   `:root` ONLY like the rest of the terminal palette (5 → 7 tokens), so they are theme-invariant
