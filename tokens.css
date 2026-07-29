@@ -76,6 +76,8 @@
   --my-term-assistant: #3FB8AE;
   --my-term-user: #EFA443;
   --my-term-dim: #9AA0AC;
+  --my-term-add: #4CC38A;   /* diff added — the heritage ok hue, frozen for the always-dark pane */
+  --my-term-del: #E5484D;   /* diff removed — the heritage error hue, frozen likewise */
 
   /* type */
   --my-font-ui: Inter, -apple-system, "Segoe UI", Roboto, sans-serif;

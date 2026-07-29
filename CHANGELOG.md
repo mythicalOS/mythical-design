@@ -6,6 +6,19 @@ maintainer-authored amendments recorded as numbered rows in the `design.md` §8 
 (the log, not the version number, is the lock ledger). Component spec versions live
 per-row in `COMPONENTS.md` and are independent of the package version.
 
+## Unreleased
+
+- **`--my-term-add` / `--my-term-del`** — terminal diff hues (added/removed lines), declared in
+  `:root` ONLY like the rest of the terminal palette (5 → 7 tokens), so they are theme-invariant
+  by construction (rule 3). The values are precisely the heritage (dark-theme) `--my-ok`/
+  `--my-error` — what a diff fence renders on `--my-term-bg` today in both app themes, so the
+  mint changes zero pixels; measured on the term bg they clear AA for small mono text
+  (8.83:1 / 5.00:1), where the light-theme pair would fail (3.75:1 / 2.99:1) — which is why the
+  terminal's own comment block refuses to re-point ok/error and a green/red must be MINTED into
+  the term palette, not borrowed from the theme-flipping status set. Named `term-add`/`term-del`
+  (not `term-ok`/`term-error`) on purpose: these are DIFF-SEMANTIC hues scoped to terminal
+  surfaces, not new status colors (rule 2 stands).
+
 ## 0.5.17 — 2026-07-29
 
 - **`--my-tone-ink`** — label ink on status-tone fills, for the new tone-filled button
