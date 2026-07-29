@@ -62,6 +62,7 @@ code{font-family:var(--my-font-mono);font-size:11px;background:var(--my-disabled
 .chip-flag.warn{background:var(--my-warn-soft);color:var(--my-warn)}
 .chip-flag.err{background:var(--my-error-soft);color:var(--my-error)}
 .chip-flag.neutral{background:var(--my-disabled-bg);color:var(--my-muted)}
+.chip-flag.info{background:var(--my-info-soft);color:var(--my-info)}
 
 /* ── CHIP-DD — the interactive sibling: control shape, control-border, hover invite. ── */
 .chip-dd{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--my-control-border);border-radius:var(--my-r-control);
@@ -140,8 +141,10 @@ code{font-family:var(--my-font-mono);font-size:11px;background:var(--my-disabled
     <div class="row"><span class="chip-flag warn">2↓ behind</span><span class="chip-flag warn">4 uncommitted</span><span class="chip-flag err">1 unpushed</span><span class="chip-flag ok">clean ✓</span></div>
     <span class="lbl">diff status</span>
     <div class="row"><span class="chip-flag warn">M</span><span class="chip-flag ok">A</span><span class="chip-flag err">D</span><span class="chip-flag neutral">U</span></div>
+    <span class="lbl">.info</span>
+    <div class="row"><span class="chip-flag info">REVIEW</span><span class="chip-flag info">ON-DONE</span><span class="chip-flag info">OBSERVATION</span><span class="chip-flag neutral">BOOT</span></div>
   </div>
-  <p class="cap">Flags are honest counters, never decoration: warn-soft for behind/uncommitted, error-soft only for something that can be lost, ok-soft for a clean tree.</p>
+  <p class="cap">Flags are honest counters, never decoration: warn-soft for behind/uncommitted, error-soft only for something that can be lost, ok-soft for a clean tree. An earlier revision ruled there is no <code>info</code> flag — that a machine fact which is merely informational is a <code>neutral</code>. The product mockups draw a finer line: info-MEANING facts (a review pass, an on-done delivery class, an observation kind) render beside genuinely neutral ones (boot, reference, dim) in the same row, and collapsing both onto neutral loses a distinction the pages depend on — so <code>info</code> ships (info-soft/info, the row above pairs one with a true neutral). <code>neutral</code> remains the arm for facts with no status meaning at all.</p>
 </div>
 
 <div class="panel">
