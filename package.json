@@ -1,6 +1,6 @@
 {
   "name": "@mythicalos/tokens",
-  "version": "0.5.19",
+  "version": "0.5.20",
   "description": "mythical design system foundation — canonical design tokens, self-hosted fonts and brand assets for the mythicalOS family. Look only; components live in @mythicalos/ui-core and its bindings.",
   "type": "module",
   "license": "Apache-2.0",

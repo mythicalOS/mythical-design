@@ -6,22 +6,37 @@ maintainer-authored amendments recorded as numbered rows in the `design.md` §8 
 (the log, not the version number, is the lock ledger). Component spec versions live
 per-row in `COMPONENTS.md` and are independent of the package version.
 
+## 0.5.20 — 2026-08-13
+
+- **No token values change.** Corrects the rationale comment on `--my-term-memory` and the matching
+  §3 note in `design.md`, both shipped in 0.5.19, which stated the convex-hull argument in a form
+  that is **self-referentially false**: "the palette's minimum `b` is `term-dim`'s -0.0187, so no
+  mix of terminal tokens can produce this one". Once `--my-term-memory` *is* a terminal token the
+  palette's minimum `b` is its own `-0.0914`, and a mix of terminal tokens reproduces it trivially.
+  The claim is only true of the **other seven** tokens — the ones that existed before it — which is
+  the form that carries the actual point: it had to be minted because nothing already in the
+  palette could reach it. Also softens `dim 92.5% + del` from "hue 315.3°" to "about 315°": at
+  exactly 92.5% the mix lands at 315.13°, and 315.34° needs 92.469%. Caught in cross-model review.
+
 ## 0.5.19 — 2026-08-13
 
 - **`--my-term-memory`** (`#D79DF0`) — the label hue for the terminal's bookkeeping rows,
   declared in `:root` ONLY like the rest of the terminal palette (7 → 8 tokens), so it is
   theme-invariant by construction (rule 3). MINTED rather than derived, and provably so: an oklab
   `color-mix` is a **convex combination**, so every mix's `b` coordinate is at least the smallest
-  `b` among its operands. Across the terminal palette that minimum is `term-dim` at
-  **b = -0.0187**; the new token sits at **b = -0.0914**, outside the hull — so no mix of terminal
-  tokens can produce it, at any ratio, nested or not. The palette's occupied chromatic hues are
+  `b` among its operands. Every **other** terminal token has `b ≥ -0.0187` (`term-dim` is the
+  smallest); the new one sits at **b = -0.0914**. It lies outside the hull of the seven tokens that
+  existed before it, so no mix of *those* could ever have produced it, at any ratio, nested or not
+  — which is precisely why it had to be minted. *(Scope matters: the claim is about the other
+  seven. The palette including this token trivially contains it.)* The occupied chromatic hues are
   `term-del` 23.0°, `term-user` 69.6°, `term-add` 159.3° and `term-assistant` 187.2°, while
   `term-ink`, `term-dim` and `term-bg` are effectively achromatic (chroma ≤ 0.019) and occupy no
-  hue. *(A weaker form of this argument — "no mix can reach the empty 200°–360° hue region" — is
-  false, and is recorded here so it is not repeated: `dim 92.5% + del` lands at hue 315.3°. It
-  arrives at chroma 0.016, and the most any two-token mix reaches anywhere in 200°–360° is 0.048,
-  against this token's 0.130. The region is reachable in hue and unreachable as a colour; the
-  `b`-coordinate argument above is the one that actually holds.)* Measured at
+  hue. *(Two weaker forms of this argument are **false** and are recorded so they are not repeated.
+  "No mix can reach the empty 200°–360° hue region": `dim ≈92.5% + del` lands at about 315°, though
+  only at chroma 0.016, and the most any two-token mix of the earlier palette reaches in that band
+  is 0.048 against this token's 0.130. And "the band is empty, therefore unreachable": hue is a
+  direction, and near the neutral axis every direction is available. The `b`-coordinate hull
+  argument above is the one that actually holds.)* Measured at
   oklab L 0.780 / chroma 0.130 / hue 315.3°, its minimum oklab ΔE to any other terminal token is
   **0.141** (nearest `--my-term-dim`) and it clears AA on `--my-term-bg` at **9.29:1**. It
   replaces a `color-mix(in oklab, var(--my-term-assistant) 45%, var(--my-term-user))` that

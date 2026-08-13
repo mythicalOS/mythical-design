@@ -80,15 +80,19 @@
   --my-term-del: #E5484D;   /* diff removed — the heritage error hue, frozen likewise */
   --my-term-memory: #D79DF0;  /* bookkeeping rows — oklab L 0.780, chroma 0.130, hue 315.3°.
      MINTED rather than derived, and provably so: an oklab color-mix is a CONVEX COMBINATION, so
-     every mix's b coordinate is at least the smallest b among its operands. The palette's minimum
-     is --my-term-dim at b = -0.0187; this token sits at b = -0.0914, outside that hull — no mix
-     of terminal tokens can produce it. (The weaker "no mix reaches hue 200°–360°" is FALSE and
-     was corrected here: dim 92.5% + del lands at hue 315.3°. But it gets there at chroma 0.016,
-     and the most any two-token mix reaches anywhere in 200°–360° is 0.048, against this token's
-     0.130 — reachable in hue, unreachable as a colour.) The palette's occupied chromatic hues are
-     del 23.0°, user 69.6°, add 159.3°, assistant 187.2°; ink/dim/bg are effectively achromatic
-     (chroma ≤ 0.019). Measured: min oklab ΔE to any other term token 0.141 (nearest
-     --my-term-dim), contrast on --my-term-bg 9.29:1. */
+     every mix's b coordinate is at least the smallest b among its operands. Every OTHER terminal
+     token has b ≥ -0.0187 (--my-term-dim is the smallest); this one sits at b = -0.0914. It lies
+     outside the hull of the tokens that existed before it, so no mix of THOSE could ever have
+     produced it — which is exactly why it had to be minted. (Scope matters: the claim is about
+     the other seven, not about the palette including this token, which of course contains it.)
+     Two weaker forms of the argument are FALSE and are recorded so they are not repeated: "no mix
+     reaches hue 200°–360°" — dim ≈92.5% + del lands at about 315°, though only at chroma 0.016,
+     and the most any two-token mix of the earlier palette reaches in that band is 0.048 against
+     this token's 0.130; and "the band is empty therefore unreachable" — hue is a direction, and
+     near the neutral axis every direction is available. The occupied chromatic hues are del 23.0°,
+     user 69.6°, add 159.3°, assistant 187.2°; ink/dim/bg are effectively achromatic (chroma
+     ≤ 0.019). Measured: min oklab ΔE to any other term token 0.141 (nearest --my-term-dim),
+     contrast on --my-term-bg 9.29:1. */
 
   /* type */
   --my-font-ui: Inter, -apple-system, "Segoe UI", Roboto, sans-serif;
