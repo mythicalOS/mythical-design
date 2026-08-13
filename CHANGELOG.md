@@ -6,6 +6,30 @@ maintainer-authored amendments recorded as numbered rows in the `design.md` §8 
 (the log, not the version number, is the lock ledger). Component spec versions live
 per-row in `COMPONENTS.md` and are independent of the package version.
 
+## 0.5.19 — 2026-08-13
+
+- **`--my-term-memory`** (`#D79DF0`) — the label hue for the terminal's bookkeeping rows,
+  declared in `:root` ONLY like the rest of the terminal palette (7 → 8 tokens), so it is
+  theme-invariant by construction (rule 3). MINTED rather than derived, and provably so: an oklab
+  `color-mix` is a **convex combination**, so every mix's `b` coordinate is at least the smallest
+  `b` among its operands. Across the terminal palette that minimum is `term-dim` at
+  **b = -0.0187**; the new token sits at **b = -0.0914**, outside the hull — so no mix of terminal
+  tokens can produce it, at any ratio, nested or not. The palette's occupied chromatic hues are
+  `term-del` 23.0°, `term-user` 69.6°, `term-add` 159.3° and `term-assistant` 187.2°, while
+  `term-ink`, `term-dim` and `term-bg` are effectively achromatic (chroma ≤ 0.019) and occupy no
+  hue. *(A weaker form of this argument — "no mix can reach the empty 200°–360° hue region" — is
+  false, and is recorded here so it is not repeated: `dim 92.5% + del` lands at hue 315.3°. It
+  arrives at chroma 0.016, and the most any two-token mix reaches anywhere in 200°–360° is 0.048,
+  against this token's 0.130. The region is reachable in hue and unreachable as a colour; the
+  `b`-coordinate argument above is the one that actually holds.)* Measured at
+  oklab L 0.780 / chroma 0.130 / hue 315.3°, its minimum oklab ΔE to any other terminal token is
+  **0.141** (nearest `--my-term-dim`) and it clears AA on `--my-term-bg` at **9.29:1**. It
+  replaces a `color-mix(in oklab, var(--my-term-assistant) 45%, var(--my-term-user))` that
+  resolved to a muted olive-grey ≈`#B2B17D`, only **0.098** ΔE from `--my-term-dim` — which is
+  the very colour the bookkeeping row's own body uses, so label and body barely separated.
+  Named `term-memory` (not a new status colour) on purpose: it is a row-kind hue scoped to
+  terminal surfaces, so rule 2 stands.
+
 ## 0.5.18 — 2026-07-29
 
 - **`--my-term-add` / `--my-term-del`** — terminal diff hues (added/removed lines), declared in

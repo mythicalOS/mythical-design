@@ -78,6 +78,20 @@ Dark ("heritage"):
 
 Terminal (BOTH themes — the terminal never goes light):
 - bg `#0B0C0F` · text `#ECE7DE` · assistant `#3FB8AE` · user `#EFA443` · dim `#9AA0AC`
+- *(v0.5.18)* add `#4CC38A` · del `#E5484D` — diff-semantic hues, the heritage ok/error
+  values frozen for the always-dark pane; **not** new status colors (rule 2 stands)
+- *(v0.5.19)* memory `#D79DF0` — the bookkeeping row's label hue. Minted, not mixed, and
+  provably unmixable: an oklab `color-mix` is a convex combination, so every mix's `b` is
+  at least the smallest `b` among its operands; the palette's minimum is dim's -0.0187 and
+  this token is -0.0914, outside the hull. Min oklab ΔE 0.141 to any other terminal token;
+  9.29:1 on the terminal bg
+
+This list is the palette in full — the terminal set is **not** five colors. Adding a
+terminal hue means adding a token here and in `tokens.css` together; `color-mix` reaches
+only the convex hull of the tokens it mixes, so it can shade between them but cannot mint
+a colour outside them. (Careful: "outside them" is about position, not hue — a mix CAN
+land on an unoccupied *hue*, because near the neutral axis every hue is available; what it
+cannot do is get there with usable chroma.)
 
 Accent tweakability *(v0.5)*: the accent is user-tweakable from **curated swatches
 only** (never a free color picker); `--my-accent-soft`/`-strong`/`-hover` derive from
