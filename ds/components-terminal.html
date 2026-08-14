@@ -16,7 +16,9 @@ body{background:#FAF9F6;color:#16181D;font:13px/1.5 Inter,-apple-system,"Segoe U
 h3{font-size:12px;font-weight:650;margin:16px 0 8px;color:#5A5F6A;text-transform:uppercase;letter-spacing:.4px}
 h3:first-child{margin-top:0}
 .term{background:#0B0C0F;border-radius:10px;padding:16px 18px;font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:12.5px;color:#ECE7DE;line-height:1.7;border:1px solid #000}
-.p{color:#3FB8AE}.dim{color:#9AA0AC}.user{color:#EFA443}
+.p{color:#3FB8AE}.dim{color:#9AA0AC}.user{color:#EFA443}.mem{color:#D79DF0}
+.ind{white-space:pre-wrap}
+.hint{font-size:11px;color:#5A5F6A;margin-top:6px}
 .tool{color:#9AA0AC;border-radius:6px;padding:0 6px;margin:0 -6px;cursor:pointer}
 .tool:hover{background:#1A1D24;color:#ECE7DE}
 @keyframes blink{50%{opacity:0}}
@@ -51,10 +53,27 @@ h3:first-child{margin-top:0}
 <div class="term">
 <span class="dim">jacob.jsonl · tail · noise off</span><br>
 <span class="p">▍assistant</span> seam refactor green — 214 tests, 0 fail.<br>
-<span class="user">← user (ASAP)</span> hold the rollout until the envelope test lands<br>
+<span class="user">→ user (ASAP)</span> hold the rollout until the envelope test lands<br>
 <span class="tool">▸ tool Bash · bun test src/delivery <span style="text-decoration:underline">(expand)</span></span><br>
 <span class="p">▍assistant</span> ack — parking the rollout, resuming envelope spe<span class="caret"></span>
 </div>
+<h3>Bus traffic &amp; bookkeeping — recv · send · memory rows</h3>
+<div class="term">
+<span class="user">→ @ peer-one · ASAP (14:32:05)</span><br>
+<span class="ind">  the message body, indented two spaces</span><br>
+<span class="p">← @ peer-two · ON-DONE (14:32:05)</span><br>
+<span class="dim ind">  the message body, indented two spaces</span><br>
+<span class="mem">⊕ memory · stored "lesson one" (14:32:05)</span><br>
+<span class="mem">⊙ memory · recalled 3 records (14:32:05)</span><br>
+<span class="dim">◷ rate limit · 5-hour window · resets 2026-08-11 08:20</span>
+</div>
+<div class="cap">Directional traffic and bookkeeping, one row kind each — and each holds its label apart
+from its body deliberately; that contrast is why they are kinds of their own rather than reuses of the dim
+aside. <code>recv</code> (incoming) sets an amber name over a full-strength body; <code>send</code> (outgoing)
+a teal name over a dim one; <code>memory</code> a dim body under <code>--my-term-memory</code>, a token minted
+for it — an oklab <code>color-mix</code> reaches only the convex hull of the tokens it mixes, and this hue
+lies outside the seven that preceded it. Arrows read from the session's point of view: → arrives,
+← leaves. The rate-limit line is an ordinary system row (◷ allowed, ⚠ otherwise), not a fourth kind.</div>
 <h3>Disconnected — warn banner above the log, values freeze as stale</h3>
 <div class="term" style="padding-bottom:12px">
 <div class="ban"><i></i>connection lost · retrying (2/5) — log frozen at 14:32:08</div>
@@ -67,11 +86,13 @@ h3:first-child{margin-top:0}
 <input placeholder="Message Jacob… (⏎ send · ⇧⏎ newline)">
 <button>Send</button><button class="stop">Stop turn</button>
 </div>
+<div class="hint">ASAP takes the first turn gap · ON-DONE waits for full idle.</div>
 <div class="send">
 <select><option>ASAP</option></select>
 <input class="f" value="re-run the fold matrix on">
 <button>Send</button><button class="stop">Stop turn</button>
 </div>
+<div class="hint">ASAP takes the first turn gap · ON-DONE waits for full idle.</div>
 <div class="send dis">
 <select disabled><option>ASAP</option></select>
 <input disabled placeholder="Jacob is stopped — restart to message">
@@ -81,9 +102,11 @@ h3:first-child{margin-top:0}
 <div class="q"><span class="badge asap">ASAP</span> re-run the fold matrix on bus keys <span class="x">✕ cancel</span></div>
 <div class="q h"><span class="badge done">ON-DONE</span> good-night after close-out commits <span class="x" style="color:#B3261E">✕ cancel</span></div>
 <div class="q conf"><span class="badge done">ON-DONE</span> <span class="msg">Cancel this delivery?</span> <span style="margin-left:auto;display:flex;gap:6px"><button class="mini yes">Cancel it</button><button class="mini no">Keep</button></span></div>
-<div class="q empty">queue empty — deliveries land here by class (ASAP interrupts · ON-DONE waits)</div>
+<div class="q empty">The queue read returned no records.</div>
 <div class="cap">Terminal always wears the dark heritage tokens regardless of app theme; the streaming caret blinks
 1/s (paused by <code>prefers-reduced-motion</code>); tool rows are collapsed by default and highlight on hover.
 The disconnect banner uses dark-theme warn-soft/warn (amber = status only). Cancel is a two-step inside the row —
-no modal for queue items; “Stop turn” stays the shipped stop-turn lane (D20), ^C keybinding.</div>
+no modal for queue items; “Stop turn” stays the shipped stop-turn lane (D20), ^C keybinding. Delivery ALWAYS waits for a
+turn boundary — ASAP takes the first gap between turns, it never interrupts one in flight — and the empty
+queue row reports only what the read returned, never operational emptiness.</div>
 </body></html>
