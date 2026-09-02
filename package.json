@@ -1,0 +1,32 @@
+{
+  "name": "@mythicalos/tokens",
+  "version": "0.5.20",
+  "description": "mythical design system foundation — canonical design tokens, self-hosted fonts and brand assets for the mythicalOS family. Look only; components live in @mythicalos/ui-core and its bindings.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mythicalOS/mythical-design.git"
+  },
+  "homepage": "https://github.com/mythicalOS/mythical-design#readme",
+  "sideEffects": [
+    "*.css"
+  ],
+  "style": "tokens.css",
+  "exports": {
+    ".": "./tokens.css",
+    "./styles": "./tokens.css",
+    "./tokens.css": "./tokens.css",
+    "./assets/*": "./assets/*"
+  },
+  "files": [
+    "tokens.css",
+    "assets",
+    "design.md",
+    "COMPONENTS.md",
+    "CHANGELOG.md"
+  ]
+}
