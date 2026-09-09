@@ -28,7 +28,12 @@ jobs:
       - name: Set up Node + npm
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          node-version: "22"
+          # Node, checked 2026-09-09 against endoflife.date: 24 is the ACTIVE LTS
+          # — active support to 2026-10-20, security support to 2028-04-30. The 22
+          # line is maintenance-only and goes end-of-life 2027-04-30. Node runs
+          # nothing but npm in this workflow; the package is files-only.
+          # Re-check the lifecycle before changing this pin; never write a version from memory.
+          node-version: "24"
           registry-url: "https://registry.npmjs.org"
 
       # Trusted publishing / provenance needs npm >= 11.5.1; ubuntu-latest ships 10.x.

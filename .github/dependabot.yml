@@ -13,3 +13,30 @@ updates:
     groups:
       actions:
         patterns: ["*"]
+
+  # The npm manifest. This package is files-only — tokens.css, fonts, brand
+  # assets, docs — so today it declares no dependencies at all and this block
+  # has nothing to open a pull request about. It is here for the day that stops
+  # being true: the coverage a manifest needs is the coverage it had BEFORE the
+  # first dependency landed, because nothing announces that a manifest just
+  # became worth watching. The actions block above covers workflow pins and
+  # nothing else.
+  #
+  # `npm` RATHER THAN `bun`, and the distinction matters where a lockfile is
+  # committed: the npm ecosystem cannot write a bun.lock, so pointing it at one
+  # produces pull requests that fail their own install. There is NO lockfile of
+  # any kind in this repository — no bun.lock, no package-lock.json — and no
+  # declared dependency for one to describe, so that failure mode does not
+  # exist here. What is left is a bare package.json, which is npm's manifest
+  # format, published to npm by this repository's own release workflow. If a
+  # dependency and a lockfile ever land here, the ecosystem must be re-decided
+  # to match the lockfile that arrives with them.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: "chore(deps)"
+    groups:
+      npm:
+        patterns: ["*"]
